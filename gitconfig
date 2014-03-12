@@ -1,0 +1,18 @@
+[user]
+	email = hnipster@gmail.com
+	name = Daniel Nichols
+[color]
+	ui = auto
+[alias]
+	co = checkout
+	s = status
+	d = diff
+	b = branch
+	ba = branch -a
+	r = remote -v
+	a = add
+	c = commit
+[rebase]
+	autosquash = true
+[push]
+	default = simple
