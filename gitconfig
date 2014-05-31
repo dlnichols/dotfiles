@@ -1,6 +1,6 @@
 [user]
-	email = hnipster@gmail.com
-	name = Daniel Nichols
+	email = dan@thenicholsrealm.com
+	name = Dan Nichols
 [color]
 	ui = auto
 [alias]
@@ -10,8 +10,9 @@
 	b = branch
 	ba = branch -a
 	r = remote -v
-	a = add
+	a = add --all
 	c = commit
+	showtrackedignored = ls-files -i --exclude-standard
 [rebase]
 	autosquash = true
 [push]
