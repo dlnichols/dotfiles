@@ -2,7 +2,7 @@
 
 # Run bash_it install...
 DOTFILE_ROOT="$HOME/.dotfiles"
-LINK_FILES=( bashrc bash_profile bash_logout gitconfig vimrc )
+LINK_FILES=( bashrc bash_profile bash_logout gitconfig vimrc zshrc vim/setup.sh vim/update.sh vim/h_media.session )
 
 remove_file () {
   echo "Removing $1"
