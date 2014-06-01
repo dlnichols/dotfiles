@@ -11,7 +11,7 @@ let g:rspec_command = "Make {spec}"
 
 autocmd BufNewFile,BufRead *.coffee.erb set filetype=coffee
 autocmd BufNewFile,BufRead Guardfile set filetype=ruby
-autocmd FileType coffee setl foldmethod=indent foldlevel=1 foldenable
+autocmd FileType coffee setl foldmethod=indent foldlevel=9 foldenable
 autocmd BufNewFile,BufRead *.rb compiler rspec
 autocmd BufNewFile,BufRead *.rb set makeprg=zeus\ rspec
 syntax on
