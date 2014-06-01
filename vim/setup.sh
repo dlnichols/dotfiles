@@ -1,7 +1,8 @@
 #!/bin/bash
 
-mkdir -p ~/.vim/autoload ~/.vim/bundle
-curl -so ~/.vim/autoload/pathogen.vim https://raw.github.com/tpope/vim-pathogen/master/autoload/pathogen.vim
+mkdir -p ~/.vim/autoload ~/.vim/bundle ~/.vim/tmp
+#curl -so ~/.vim/autoload/pathogen.vim https://raw.github.com/tpope/vim-pathogen/master/autoload/pathogen.vim
+curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim
 cd ~/.vim/bundle
 git clone https://github.com/scrooloose/nerdtree.git
 git clone https://github.com/tpope/vim-afterimage.git

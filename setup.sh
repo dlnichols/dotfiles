@@ -2,7 +2,17 @@
 
 # Run bash_it install...
 DOTFILE_ROOT="$HOME/.dotfiles"
-LINK_FILES=( bashrc bash_profile bash_logout gitconfig vimrc zshrc vim/setup.sh vim/update.sh vim/h_media.session )
+LINK_FILES[1]=bashrc
+LINK_FILES[2]=bash_profile
+LINK_FILES[3]=bash_logout
+LINK_FILES[4]=gitconfig
+LINK_FILES[5]=vimrc
+LINK_FILES[6]=zshrc
+LINK_FILES[7]=vim/setup.sh
+LINK_FILES[8]=vim/update.sh
+LINK_FILES[9]=vim/h_media.session
+LINK_FILES[10]=xinitrc
+LINK_FILES[11]=Xresources
 
 remove_file () {
   echo "Removing $1"
@@ -36,3 +46,5 @@ for file in "${LINK_FILES[@]}"; do
     link_file "$homefile" "$linkfile"
   fi
 done
+
+chmod +x xinitrc
