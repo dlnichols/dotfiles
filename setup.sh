@@ -13,6 +13,7 @@ LINK_FILES[8]=vim/update.sh
 LINK_FILES[9]=vim/h_media.session
 LINK_FILES[10]=xinitrc
 LINK_FILES[11]=Xresources
+LINK_FILES[11]=xprofile
 
 remove_file () {
   echo "Removing $1"

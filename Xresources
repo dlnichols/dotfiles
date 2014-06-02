@@ -1,3 +1,10 @@
+! XFT and Font settings
+Xft*dpi:                              96
+Xft*antialias:                        true
+Xft*hinting:                          true
+Xft*hintstyle:                        hintslight
+Xft*rgba:                             rgb
+
 ! URxvt*termName:                       string
 ! URxvt*geometry:                       geometry
 ! URxvt*chdir:                          string
@@ -33,46 +40,48 @@
 ! URxvt*cursorUnderline:                boolean
 ! URxvt*cursorBlink:                    boolean
 ! URxvt*pointerBlank:                   boolean
-URxvt.background: #3f3f3f
-URxvt.foreground: #dcdccc
-URxvt.color0: #3f3f3f
-URxvt.color1: #cc9393
-URxvt.color2: #7f9f7f
-URxvt.color3: #d0bf8f
-URxvt.color4: #6ca0a3
-URxvt.color5: #dc8cc3
-URxvt.color6: #93e0e3
-URxvt.color7: #dcdccc
-URxvt.color8: #000000
-URxvt.color9: #dca3a3
-URxvt.color10: #bfebbf
-URxvt.color11: #f0dfaf
-URxvt.color12: #8cd0d3
-URxvt.color13: #dc8cc3
-URxvt.color14: #93e0e3
-URxvt.color15: #ffffff
+URxvt*background:                     #3f3f3f
+URxvt*foreground:                     #dcdccc
+URxvt*color0:                         #3f3f3f
+URxvt*color1:                         #cc9393
+URxvt*color2:                         #7f9f7f
+URxvt*color3:                         #d0bf8f
+URxvt*color4:                         #6ca0a3
+URxvt*color5:                         #dc8cc3
+URxvt*color6:                         #93e0e3
+URxvt*color7:                         #dcdccc
+URxvt*color8:                         #000000
+URxvt*color9:                         #dca3a3
+URxvt*color10:                        #bfebbf
+URxvt*color11:                        #f0dfaf
+URxvt*color12:                        #8cd0d3
+URxvt*color13:                        #dc8cc3
+URxvt*color14:                        #93e0e3
+URxvt*color15:                        #ffffff
 ! URxvt*colorBD:                        color
 ! URxvt*colorIT:                        color
-URxvt.colorUL: #366060
+URxvt*colorUL:                        #366060
 ! URxvt*colorRV:                        color
-URxvt.underlineColor: #dfaf8f
+URxvt*underlineColor:                 #dfaf8f
 ! URxvt*scrollColor:                    color
 ! URxvt*troughColor:                    color
 ! URxvt*highlightColor:                 color
 ! URxvt*highlightTextColor:             color
-URxvt.cursorColor: #aaaaaa
+URxvt*cursorColor:                    #aaaaaa
 ! URxvt*cursorColor2:                   color
 ! URxvt*pointerColor:                   color
 ! URxvt*pointerColor2:                  color
 ! URxvt*borderColor:                    color
 ! URxvt*iconFile:                       file
-! URxvt.font: -*-terminus-medium-*-*-*-*-140-*-*-*-*-iso8859-2
-! URxvt.boldFont: -*-terminus-bold-*-*-*-*-12-*-*-*-*-iso8859-2
-! URxvt.italicFont: -*-terminus-medium-*-*-*-*-140-*-*-*-*-iso8859-2
-! URxvt.boldItalicFont: -*-terminus-bold-*-*-*-*-12-*-*-*-*-iso8859-2
+! URxvt*font: -*-terminus-medium-*-*-*-*-140-*-*-*-*-iso8859-2
+URxvt*font:                           xft:DejaVu Sans Mono:pixelsize=16
+! URxvt*boldFont: -*-terminus-bold-*-*-*-*-12-*-*-*-*-iso8859-2
+URxvt*boldFont:                       xft:DejaVu Sans Mono:bold:pixelsize=16
+! URxvt*italicFont: -*-terminus-medium-*-*-*-*-140-*-*-*-*-iso8859-2
+! URxvt*boldItalicFont: -*-terminus-bold-*-*-*-*-12-*-*-*-*-iso8859-2
 ! URxvt*intensityStyles:                boolean
-! URxvt*inputMethod:                    name
-! URxvt*preeditType:                    style
+URxvt*inputMethod:                    ibus
+URxvt*preeditType:                    OverTheSpot
 ! URxvt*imLocale:                       string
 ! URxvt*imFont:                         fontname
 ! URxvt*title:                          string
