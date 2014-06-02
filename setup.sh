@@ -13,7 +13,8 @@ LINK_FILES[8]=vim/update.sh
 LINK_FILES[9]=vim/h_media.session
 LINK_FILES[10]=xinitrc
 LINK_FILES[11]=Xresources
-LINK_FILES[11]=xprofile
+LINK_FILES[12]=config/awesome/rc.lua
+LINK_FILES[13]=config/awesome/theme.lua
 
 remove_file () {
   echo "Removing $1"
