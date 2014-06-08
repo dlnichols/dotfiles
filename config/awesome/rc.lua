@@ -73,11 +73,12 @@ randomize_wallpaper()
 -- Define a tag table which hold all screen tags.
 local tags = {
   names   = {     "main",      "www",          3,          4,          5,     "gimp",          7,       "im",    "music" },
-  layouts = { layouts[1], layouts[4], layouts[1], layouts[1], layouts[1], layouts[4], layouts[1], layouts[5], layouts[4] }
+  layouts = { layouts[1], layouts[1], layouts[1], layouts[1], layouts[1], layouts[4], layouts[1], layouts[5], layouts[4] }
 }
 for s = 1, screen.count() do
   -- Each screen has its own tag table.
   tags[s] = awful.tag(tags.names, s, tags.layouts)
+  awful.tag.incmwfact(0.35, tags[s][2])
 end
 -- }}}
 
@@ -396,19 +397,19 @@ awful.rules.rules = {
                    focus = awful.client.focus.filter,
                    raise = true,
                    keys = clientkeys,
-                   buttons = clientbuttons } },
+                   buttons = clientbuttons
+                 },
+    callback   =   awful.client.setslave
+  },
   { rule = { class = "URxvt" },
     properties = { opacity = 0.85,
-                   size_hints_honor = false } },
-  { rule = { class = "MPlayer" },
-    properties = { floating = true } },
-  { rule = { class = "pinentry" },
-    properties = { floating = true } },
-  { rule = { class = "gimp" },
-    properties = { floating = true } },
-  -- Set Firefox to always map on tags number 2 of screen 1.
-  -- { rule = { class = "Firefox" },
-  --   properties = { tag = tags[1][2] } },
+                   size_hints_honor = false
+                 }
+  },
+  -- We can use Gorilla here because the main window has a class of 'Main.tcl'
+  { rule_any = { class = { "Gorilla", "Toplevel" } },
+    properties = { floating = true }
+  }
 }
 -- }}}
 
