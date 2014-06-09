@@ -3,18 +3,19 @@
 DOTFILE_ROOT="$HOME/.dotfiles"
 
 #Files to link symbolically
-LINK_FILES[1]=bash_profile
-LINK_FILES[2]=gitconfig
-LINK_FILES[3]=vimrc
-LINK_FILES[4]=zshrc
-LINK_FILES[5]=zlogin
-LINK_FILES[6]=vim/setup.sh
-LINK_FILES[7]=vim/update.sh
-LINK_FILES[8]=vim/h_media.session
-LINK_FILES[9]=xinitrc
-LINK_FILES[10]=Xresources
-LINK_FILES[11]=config/awesome/rc.lua
-LINK_FILES[12]=config/awesome/theme.lua
+LINK_FILES[1]=.bash_profile
+LINK_FILES[2]=.gitconfig
+LINK_FILES[3]=.vimrc
+LINK_FILES[4]=.zshrc
+LINK_FILES[5]=.zlogin
+LINK_FILES[6]=.vim/setup.sh
+LINK_FILES[7]=.vim/update.sh
+LINK_FILES[8]=.vim/h_media.session
+LINK_FILES[9]=.xinitrc
+LINK_FILES[10]=.Xresources
+LINK_FILES[11]=.config/awesome/rc.lua
+LINK_FILES[12]=.config/awesome/theme.lua
+LINK_FILES[13]=bin/gmusic
 
 #Files to make executable
 EXEC_FILES[1]=.xinitrc
@@ -38,8 +39,15 @@ exec_file () {
 # For link_files...
 echo "Linking dotfiles..."
 for file in "${LINK_FILES[@]}"; do
-  homefile="$HOME/.$file"
-  linkfile="$DOTFILE_ROOT/$file"
+  homefile="$HOME/$file"
+  case "$file" in
+    .*)
+      linkfile="$DOTFILE_ROOT/${file:1}"
+      ;;
+    *)
+      linkfile="$DOTFILE_ROOT/${file:0}"
+      ;;
+  esac
 
   # Check if the file exists
   if [ -e "$homefile" ]; then
