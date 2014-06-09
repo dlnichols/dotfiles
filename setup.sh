@@ -3,11 +3,10 @@
 DOTFILE_ROOT="$HOME/.dotfiles"
 
 #Files to link symbolically
-LINK_FILES[1]=.bash_profile
 LINK_FILES[2]=.gitconfig
 LINK_FILES[3]=.vimrc
 LINK_FILES[4]=.zshrc
-LINK_FILES[5]=.zlogin
+LINK_FILES[5]=.zprofile
 LINK_FILES[6]=.vim/setup.sh
 LINK_FILES[7]=.vim/update.sh
 LINK_FILES[8]=.vim/h_media.session
