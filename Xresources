@@ -37,38 +37,46 @@ URxvt*scrollBar_right:                true
 ! URxvt*mouseWheelScrollPage:           boolean
 ! URxvt*tripleclickwords:               boolean
 ! URxvt*insecure:                       boolean
-! URxvt*cursorUnderline:                boolean
-! URxvt*cursorBlink:                    boolean
+URxvt*cursorUnderline:                false
+URxvt*cursorBlink:                    false
 ! URxvt*pointerBlank:                   boolean
-URxvt*background:                     #3f3f3f
-URxvt*foreground:                     #dcdccc
-URxvt*color0:                         #3f3f3f
-URxvt*color1:                         #cc9393
-URxvt*color2:                         #7f9f7f
-URxvt*color3:                         #d0bf8f
-URxvt*color4:                         #6ca0a3
-URxvt*color5:                         #dc8cc3
-URxvt*color6:                         #93e0e3
-URxvt*color7:                         #dcdccc
-URxvt*color8:                         #000000
-URxvt*color9:                         #dca3a3
-URxvt*color10:                        #bfebbf
-URxvt*color11:                        #f0dfaf
-URxvt*color12:                        #8cd0d3
-URxvt*color13:                        #dc8cc3
-URxvt*color14:                        #93e0e3
-URxvt*color15:                        #ffffff
-! URxvt*colorBD:                        color
-! URxvt*colorIT:                        color
-URxvt*colorUL:                        #366060
+URxvt*background:                     #3F3F3F
+URxvt*foreground:                     #DCDCCC
+! black
+URxvt*color0:                         #1E2320
+URxvt*color8:                         #709080
+! red
+URxvt*color1:                         #CC9393
+URxvt*color9:                         #DCA3A3
+! green
+URxvt*color2:                         #60B48A
+URxvt*color10:                        #C3BF9F
+! yellow
+URxvt*color3:                         #DFAF8F
+URxvt*color11:                        #F0DFAF
+! blue
+URxvt*color4:                         #6CA0A3
+URxvt*color12:                        #8CD0D3
+! purple
+URxvt*color5:                         #DC8CC3
+URxvt*color13:                        #EC93D3
+! cyan
+URxvt*color6:                         #8CD0D3
+URxvt*color14:                        #93E0E3
+! white
+URxvt*color7:                         #DCDCCC
+URxvt*color15:                        #FFFFFF
+! URxvt*colorBD:                        #E0CF9F
+! URxvt*colorIT:                        #656555
+URxvt*colorUL:                        #FFFFFF
 ! URxvt*colorRV:                        color
-URxvt*underlineColor:                 #dfaf8f
+! URxvt*underlineColor:                 #F0DFAF
 ! URxvt*scrollColor:                    color
 ! URxvt*troughColor:                    color
 ! URxvt*highlightColor:                 color
 ! URxvt*highlightTextColor:             color
-URxvt*cursorColor:                    #aaaaaa
-! URxvt*cursorColor2:                   color
+URxvt*cursorColor:                    #DCDCCC
+! URxvt*cursorColor2:                   #FFFFEF
 ! URxvt*pointerColor:                   color
 ! URxvt*pointerColor2:                  color
 ! URxvt*borderColor:                    color
