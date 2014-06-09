@@ -13,9 +13,9 @@ Xft*rgba:                             rgb
 ! URxvt*jumpScroll:                     boolean
 ! URxvt*skipScroll:                     boolean
 ! URxvt*pastableTabs:                   boolean
-! URxvt*scrollstyle:                    mode
+URxvt*scrollstyle:                    plain
 ! URxvt*scrollBar:                      boolean
-! URxvt*scrollBar_right:                boolean
+URxvt*scrollBar_right:                true
 ! URxvt*scrollBar_floating:             boolean
 ! URxvt*scrollBar_align:                mode
 ! URxvt*thickness:                      number
@@ -116,6 +116,12 @@ URxvt*preeditType:                    OverTheSpot
 ! URxvt*iso14755_52:                    boolean
 ! URxvt*xrm:                            string
 ! URxvt*keysym.sym:                     keysym
+URxvt*keysym.Shift-Up:                command:\033]720;1\007
+URxvt*keysym.Shift-Down:              command:\033]721;1\007
+URxvt*keysym.Control-Up:              command:\033]720;5\007
+URxvt*keysym.Control-Down:            command:\033]721;5\007
+URxvt*keysym.Meta-Up:                 command:\033]720;10\007
+URxvt*keysym.Meta-Down:               command:\033]721;10\007
 ! URxvt*background.border:              boolean
 ! URxvt*background.expr:                string
 ! URxvt*background.interval:            seconds

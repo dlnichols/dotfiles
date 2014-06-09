@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
 
-# Run bash_it install...
 DOTFILE_ROOT="$HOME/.dotfiles"
+
+#Files to link symbolically
 LINK_FILES[1]=bash_profile
 LINK_FILES[2]=gitconfig
 LINK_FILES[3]=vimrc
@@ -15,6 +16,10 @@ LINK_FILES[10]=Xresources
 LINK_FILES[11]=config/awesome/rc.lua
 LINK_FILES[12]=config/awesome/theme.lua
 
+#Files to make executable
+EXEC_FILES[1]=.xinitrc
+EXEC_FILES[2]=bin/gmusic
+
 remove_file () {
   echo "Removing $1"
   [ -e "$1" ] && rm "$1"
@@ -25,7 +30,13 @@ link_file () {
   [ -e "$2" ] && ln -s "$2" "$1"
 }
 
+exec_file () {
+  echo "Setting executable bit on $1"
+  [ -e "$1" ] && chmod +x "$1"
+}
+
 # For link_files...
+echo "Linking dotfiles..."
 for file in "${LINK_FILES[@]}"; do
   homefile="$HOME/.$file"
   linkfile="$DOTFILE_ROOT/$file"
@@ -48,4 +59,7 @@ for file in "${LINK_FILES[@]}"; do
   fi
 done
 
-chmod +x xinitrc
+echo "Setting executable bits..."
+for file in "${EXEC_FILES[@]}"; do
+  exec_file "$HOME/$file"
+done

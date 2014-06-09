@@ -401,6 +401,13 @@ awful.rules.rules = {
                  },
     callback   =   awful.client.setslave
   },
+  -- "crx_icppfcnhkcmnfdhfhphakoifcfokfdhg", "Chromium"
+  { rule = { class = "Chromium", instance = "crx_icppfcnhkcmnfdhfhphakoifcfokfdhg" },
+    properties = { tag = tags[1][9],
+                   switchtotag = true
+                 }
+  },
+  -- Disable hinting for URxvt (so it doesn't leave weird borders) and opacify it
   { rule = { class = "URxvt" },
     properties = { opacity = 0.85,
                    size_hints_honor = false
