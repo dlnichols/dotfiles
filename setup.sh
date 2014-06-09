@@ -16,6 +16,9 @@ LINK_FILES[10]=.Xresources
 LINK_FILES[11]=.config/awesome/rc.lua
 LINK_FILES[12]=.config/awesome/theme.lua
 LINK_FILES[13]=bin/gmusic
+LINK_FILES[14]=bin/cadult
+LINK_FILES[15]=bin/cdefault
+LINK_FILES[16]=bin/cprivate
 
 #Files to make executable
 EXEC_FILES[1]=.xinitrc
