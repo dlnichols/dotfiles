@@ -2,19 +2,18 @@
 
 # Run bash_it install...
 DOTFILE_ROOT="$HOME/.dotfiles"
-LINK_FILES[1]=bashrc
-LINK_FILES[2]=bash_profile
-LINK_FILES[3]=bash_logout
-LINK_FILES[4]=gitconfig
-LINK_FILES[5]=vimrc
-LINK_FILES[6]=zshrc
-LINK_FILES[7]=vim/setup.sh
-LINK_FILES[8]=vim/update.sh
-LINK_FILES[9]=vim/h_media.session
-LINK_FILES[10]=xinitrc
-LINK_FILES[11]=Xresources
-LINK_FILES[12]=config/awesome/rc.lua
-LINK_FILES[13]=config/awesome/theme.lua
+LINK_FILES[1]=bash_profile
+LINK_FILES[2]=gitconfig
+LINK_FILES[3]=vimrc
+LINK_FILES[4]=zshrc
+LINK_FILES[5]=zlogin
+LINK_FILES[6]=vim/setup.sh
+LINK_FILES[7]=vim/update.sh
+LINK_FILES[8]=vim/h_media.session
+LINK_FILES[9]=xinitrc
+LINK_FILES[10]=Xresources
+LINK_FILES[11]=config/awesome/rc.lua
+LINK_FILES[12]=config/awesome/theme.lua
 
 remove_file () {
   echo "Removing $1"
