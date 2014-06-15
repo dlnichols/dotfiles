@@ -13,6 +13,7 @@
 	a = add --all
 	c = commit
 	showtrackedignored = ls-files -i --exclude-standard
+	dc = diff --cached
 [rebase]
 	autosquash = true
 [push]

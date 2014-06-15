@@ -16,9 +16,11 @@ babl 0.1.10-1
 bash 4.3.018-1
 binutils 2.24-4
 bison 3.0.2-1
+boost-libs 1.55.0-6
 bzip2 1.0.6-5
 ca-certificates 20140325-1
 cairo 1.12.16-2
+calc 2.12.4.13-1
 chromium 35.0.1916.114-1
 cloog 0.18.1-2
 colord 1.2.0-1
@@ -74,6 +76,7 @@ gmp 6.0.0-1
 gnupg 2.0.23-1
 gnutls 3.3.4-1
 gobject-introspection 1.40.0-1
+gperftools 2.2-1
 gpgme 1.5.0-1
 gpm 1.20.7-4
 graphicsmagick 1.3.19-3
@@ -96,6 +99,7 @@ hwids 20130915.1-1
 iana-etc 2.30-4
 ibus 1.5.7-2
 ibus-kkc 1.5.20-1
+icu 53.1-1
 ilmbase 2.1.0-1
 imlib2 1.4.6-1
 inetutils 1.9.2-1
@@ -236,13 +240,13 @@ mesa 10.2.1-1
 mesa-libgl 10.2.1-1
 mkinitcpio 17-1
 mkinitcpio-busybox 1.21.1-2
+mongodb 2.6.1-2
 mpfr 3.1.2.p8-1
 mtdev 1.1.5-1
 nano 2.2.6-2
 ncurses 5.9-6
 netctl 1.7-1
 nettle 2.7.1-1
-nodejs 0.10.28-3
 nouveau-dri 10.2.1-1
 nspr 4.10.5-1
 nss 3.16.1-1
