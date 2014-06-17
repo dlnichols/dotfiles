@@ -293,14 +293,14 @@ fpath+=($ZSH/functions $ZSH/completions)
 unsetopt list_ambiguous
 setopt auto_list
 setopt auto_menu
-setopt menu_complete
+#setopt menu_complete
 setopt always_to_end
 
 #zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#) ([0-9a-z-]#)*=01;34=0=01'
 
 zstyle ':completion:*' completer _complete _ignored
 zstyle ':completion:*' insert-unambiguous true
-zstyle ':completion:*' menu select insert-unambiguous search
+zstyle ':completion:*' menu select
 zstyle ':completion:*' format 'Completing %d'
 zstyle ':completion:*' group-name ''
 zstyle ':completion:*' list-colors ''

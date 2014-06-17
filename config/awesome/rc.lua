@@ -112,7 +112,6 @@ function update_volume()
   fd:close()
 
   local volume = string.match(status, "(%d?%d?%d)%%")
-  volume = string.format("% 3d", volume)
 
   status = string.match(status, "%[(o[^%]]*)%]")
 
@@ -121,15 +120,58 @@ function update_volume()
   else
     volume = volume .. "M"
   end
-  myvolume:set_markup(volume)
+  myvolume:set_markup(" V:"..volume)
 end
 update_volume()
 
 -- Create a battery widget
---local mybattery = wibox.widget.textbox()
+local mybattery = wibox.widget.textbox()
+function update_battery()
+  local fh = io.open("/sys/class/power_supply/BAT0/present", "r")
+  local status
+  if fh == nil then
+    status = "A/C"
+  else
+    local fnow    = io.open("/sys/class/power_supply/BAT0/energy_now")
+    local enow    = fnow:read()
+    fnow:close()
+
+    local ffull   = io.open("/sys/class/power_supply/BAT0/energy_full")
+    local efull   = ffull:read()
+    ffull:close()
+
+    local fstatus = io.open("/sys/class/power_supply/BAT0/status")
+    local estatus = fstatus:read()
+    fstatus:close()
+
+    status = math.floor(enow * 100 / efull).."%"
+    if estatus:match("Charging") then
+      status = "⚡"..status
+    elseif estatus:match("Discharging") then
+      status = "-"..status
+    end
+  end
+  mybattery:set_markup(" B:"..status)
+end
+update_battery()
+
+local mybattery_timer = timer({ timeout = 3 })
+mybattery_timer:connect_signal("timeout", update_battery)
+mybattery_timer:start()
 
 -- Create a WiFi widget
---local mywifi = wibox.widget.textbox()
+local mywifi = wibox.widget.textbox()
+function update_wifi()
+  local fh = io.popen("awk 'NR==3 {print $3 \"%\"}' /proc/net/wireless | sed 's/\\.//g'")
+  local strength = fh:read()
+  fh:close()
+  mywifi:set_markup(" W:"..strength)
+end
+update_wifi()
+
+local mywifi_timer = timer({ timeout = 5 })
+mywifi_timer:connect_signal("timeout", update_wifi)
+mywifi_timer:start()
 
 -- Create a textclock widget
 local mytextclock = awful.widget.textclock()
@@ -215,9 +257,9 @@ for s = 1, screen.count() do
   local right_layout = wibox.layout.fixed.horizontal()
   if s == 1 then right_layout:add(wibox.widget.systray()) end
   right_layout:add(myvolume)
---  right_layout:add(mywifi)
+  right_layout:add(mywifi)
   right_layout:add(mytextclock)
---  right_layout:add(mybattery)
+  right_layout:add(mybattery)
   right_layout:add(mylayoutbox[s])
 
   -- Now bring it all together (with the tasklist in the middle)
@@ -303,9 +345,9 @@ local globalkeys = awful.util.table.join(
   awful.key({ modkey, "Control" }, "n", awful.client.restore),
 
   -- Prompt
-  awful.key({ modkey },            "r",     function() mypromptbox[mouse.screen]:run() end),
+  awful.key({ modkey            }, "r",     function() mypromptbox[mouse.screen]:run() end),
 
-  awful.key({ modkey }, "x", function()
+  awful.key({ modkey            }, "x", function()
     awful.prompt.run({ prompt = "Run Lua code: " },
     mypromptbox[mouse.screen].widget,
     awful.util.eval, nil,
@@ -325,11 +367,7 @@ local clientkeys = awful.util.table.join(
   awful.key({ modkey, "Control" }, "Return", function(c) c:swap(awful.client.getmaster()) end),
   awful.key({ modkey,           }, "o",      awful.client.movetoscreen                       ),
   awful.key({ modkey,           }, "t",      function(c) c.ontop = not c.ontop            end),
-  awful.key({ modkey,           }, "n",      function(c)
-    -- The client currently has the input focus, so it cannot be
-    -- minimized, since minimized clients can't have the focus.
-    c.minimized = true
-  end),
+  awful.key({ modkey,           }, "n",      function(c) c.minimized = true               end),
   awful.key({ modkey,           }, "m",      function(c)
     c.maximized_horizontal = not c.maximized_horizontal
     c.maximized_vertical   = not c.maximized_vertical

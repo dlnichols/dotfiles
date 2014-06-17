@@ -3,13 +3,13 @@
 DOTFILE_ROOT="$HOME/.dotfiles"
 
 #Files to link symbolically
-LINK_FILES[2]=.gitconfig
-LINK_FILES[3]=.vimrc
-LINK_FILES[4]=.zshrc
-LINK_FILES[5]=.zprofile
-LINK_FILES[6]=.vim/setup.sh
-LINK_FILES[7]=.vim/update.sh
-LINK_FILES[8]=.vim/h_media.session
+LINK_FILES[1]=.gitconfig
+LINK_FILES[2]=.vimrc
+LINK_FILES[3]=.zshrc
+LINK_FILES[4]=.zprofile
+LINK_FILES[5]=.vim/setup.sh
+LINK_FILES[6]=.vim/update.sh
+LINK_FILES[7]=.vim/h_media.session
 LINK_FILES[9]=.xinitrc
 LINK_FILES[10]=.Xresources
 LINK_FILES[11]=.config/awesome/rc.lua
@@ -18,10 +18,15 @@ LINK_FILES[13]=bin/gmusic
 LINK_FILES[14]=bin/cadult
 LINK_FILES[15]=bin/cdefault
 LINK_FILES[16]=bin/cprivate
+LINK_FILES[17]=bin/h_media
 
 #Files to make executable
 EXEC_FILES[1]=.xinitrc
 EXEC_FILES[2]=bin/gmusic
+EXEC_FILES[3]=bin/cdefault
+EXEC_FILES[4]=bin/cadult
+EXEC_FILES[5]=bin/cprivate
+EXEC_FILES[6]=bin/h_media
 
 remove_file () {
   echo "Removing $1"
