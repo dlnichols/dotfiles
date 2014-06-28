@@ -14,6 +14,7 @@
 	c = commit
 	showtrackedignored = ls-files -i --exclude-standard
 	dc = diff --cached
+	l = log
 [rebase]
 	autosquash = true
 [push]
