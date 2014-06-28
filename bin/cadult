@@ -1,1 +1,1 @@
-/usr/bin/chromium --profile-directory=Adult
+/usr/bin/chromium --profile-directory=Adult &

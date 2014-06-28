@@ -1,1 +1,1 @@
-/usr/bin/chromium --profile-directory=Default
+/usr/bin/chromium --profile-directory=Default &
