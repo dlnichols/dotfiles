@@ -72,7 +72,7 @@ randomize_wallpaper()
 -- {{{ Tags
 -- Define a tag table which hold all screen tags.
 local tags = {
-  names   = {     "main",      "www",          3,          4,          5,     "gimp",          7,       "im",    "music" },
+  names   = {     "main",      "www",          3,          4,          5,     "gimp",      "vlc",       "im",    "music" },
   layouts = { layouts[1], layouts[1], layouts[1], layouts[1], layouts[1], layouts[4], layouts[1], layouts[5], layouts[4] }
 }
 for s = 1, screen.count() do
@@ -457,6 +457,12 @@ awful.rules.rules = {
                    size_hints_honor = false
                  }
   },
+  { rule = { class = "Vlc" },
+    properties = { tag = tags[1][7],
+                   switchtotag = true
+                 }
+  },
+  -- This rule floats our miscellany windows (Gorilla sub windows and some others)
   -- We can use Gorilla here because the main window has a class of 'Main.tcl'
   { rule_any = { class = { "Gorilla", "Toplevel" } },
     properties = { floating = true }

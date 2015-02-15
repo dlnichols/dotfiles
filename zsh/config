@@ -23,6 +23,14 @@ alias g='git'
 
 alias ps='ps -eH'
 
+alias grep='grep --color=auto --exclude-dir=.git --exclude-dir=node_modules'
+
+function play() {
+  vlc --fullscreen $@ &
+}
+
+#export GREP_COLOR='1;32'
+
 function zsh_stats() {
   fc -l 1 | awk '{CMD[$2]++;count++;}END { for (a in CMD)print CMD[a] " " CMD[a]/count*100 "% " a;}' | grep -v "./" | column -c3 -s " " -t | sort -nr | nl | head -n20
 }
@@ -132,15 +140,6 @@ git_prompt_status() {
   fi
   echo $STATUS
 }
-
-local GREP_OPTIONS="--color=auto"
-
-for PATTERN in .git node_modules; do
-  GREP_OPTIONS+=" --exclude-dir=$PATTERN"
-done
-
-export GREP_OPTIONS="$GREP_OPTIONS"
-export GREP_COLOR='1;32'
 
 ## Command history configuration
 if [ -z $HISTFILE ]; then
