@@ -165,7 +165,11 @@ function update_wifi()
   local fh = io.popen("awk 'NR==3 {print $3 \"%\"}' /proc/net/wireless | sed 's/\\.//g'")
   local strength = fh:read()
   fh:close()
-  mywifi:set_markup(" W:"..strength)
+  if strength then
+    mywifi:set_markup(" W:"..strength)
+  else
+    mywifi:set_markup(" W:--")
+  end
 end
 update_wifi()
 
