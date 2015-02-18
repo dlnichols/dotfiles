@@ -20,6 +20,7 @@ LINK_FILES[14]=bin/cadult
 LINK_FILES[15]=bin/cdefault
 LINK_FILES[16]=bin/cprivate
 LINK_FILES[17]=bin/h_media
+LINK_FILES[18]=bin/gkeep
 
 #Files to make executable
 EXEC_FILES[1]=.xinitrc
@@ -28,6 +29,7 @@ EXEC_FILES[3]=bin/cdefault
 EXEC_FILES[4]=bin/cadult
 EXEC_FILES[5]=bin/cprivate
 EXEC_FILES[6]=bin/h_media
+EXEC_FILES[7]=bin/gkeep
 
 remove_file () {
   echo "Removing $1"
