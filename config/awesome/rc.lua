@@ -72,13 +72,13 @@ randomize_wallpaper()
 -- {{{ Tags
 -- Define a tag table which hold all screen tags.
 local tags = {
-  names   = {     "main",      "www",          3,          4,          5,     "gimp",      "vlc",       "im",    "music" },
-  layouts = { layouts[1], layouts[1], layouts[1], layouts[1], layouts[1], layouts[4], layouts[1], layouts[5], layouts[4] }
+  names   = {     "main",      "www",          3,          4,  "eclipse",     "gimp",      "vlc",       "im",    "music" },
+  layouts = { layouts[1], layouts[1], layouts[1], layouts[1], layouts[5], layouts[4], layouts[1], layouts[5], layouts[4] }
 }
 for s = 1, screen.count() do
   -- Each screen has its own tag table.
   tags[s] = awful.tag(tags.names, s, tags.layouts)
-  awful.tag.incmwfact(0.35, tags[s][2])
+  awful.tag.incmwfact(0.25, tags[s][2])
 end
 -- }}}
 
@@ -335,7 +335,7 @@ local globalkeys = awful.util.table.join(
   awful.key({ modkey,           }, "Return", function() awful.util.spawn(terminal) end),
   awful.key({ modkey, "Control" }, "r", awesome.restart),
   awful.key({ modkey, "Shift"   }, "q", awesome.quit),
-  awful.key({ modkey, "Shift", "Control" }, "q", function() awful.util.spawn("shutdown -h now") end),
+  awful.key({ modkey, "Shift", "Control" }, "q", function() awful.util.spawn("systemctl poweroff") end),
 
   awful.key({ modkey,           }, "l",     function() awful.tag.incmwfact( 0.05)    end),
   awful.key({ modkey,           }, "h",     function() awful.tag.incmwfact(-0.05)    end),
@@ -445,6 +445,7 @@ awful.rules.rules = {
                  },
     callback   =   awful.client.setslave
   },
+  -- Moves gmusic to the last tab (max)
   -- "crx_icppfcnhkcmnfdhfhphakoifcfokfdhg", "Chromium"
   { rule = { class = "Chromium", instance = "crx_icppfcnhkcmnfdhfhphakoifcfokfdhg" },
     properties = { tag = tags[1][9],
@@ -457,6 +458,7 @@ awful.rules.rules = {
                    size_hints_honor = false
                  }
   },
+  -- Moves vlc to our its tab
   { rule = { class = "Vlc" },
     properties = { tag = tags[1][7],
                    switchtotag = true
