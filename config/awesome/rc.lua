@@ -72,7 +72,7 @@ randomize_wallpaper()
 -- {{{ Tags
 -- Define a tag table which hold all screen tags.
 local tags = {
-  names   = {     "main",      "www",          3,          4,      "dev",     "gimp",      "vlc",       "im",    "music" },
+  names   = {     "main",      "www",          3,      "dev",      "ide",     "gimp",      "vlc",       "im",    "music" },
   layouts = { layouts[1], layouts[1], layouts[1], layouts[1], layouts[5], layouts[4], layouts[1], layouts[5], layouts[4] }
 }
 for s = 1, screen.count() do
