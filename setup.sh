@@ -11,7 +11,7 @@ LINK_FILES[5]=.npmrc
 LINK_FILES[6]=.vim/setup.sh
 LINK_FILES[7]=.vim/update.sh
 LINK_FILES[8]=.vim/h_media.session
-LINK_FILES[9]=.xinitrc
+LINK_FILES[9]=.xprofile
 LINK_FILES[10]=.Xresources
 LINK_FILES[11]=.config/awesome/rc.lua
 LINK_FILES[12]=.config/awesome/theme.lua
@@ -23,7 +23,7 @@ LINK_FILES[17]=bin/h_media
 LINK_FILES[18]=bin/gkeep
 
 #Files to make executable
-EXEC_FILES[1]=.xinitrc
+EXEC_FILES[1]=.xprofile
 EXEC_FILES[2]=bin/gmusic
 EXEC_FILES[3]=bin/cdefault
 EXEC_FILES[4]=bin/cadult
