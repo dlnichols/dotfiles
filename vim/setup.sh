@@ -25,3 +25,6 @@ git clone https://github.com/tpope/vim-dispatch.git
 git clone https://github.com/vim-ruby/vim-ruby.git
 git clone https://github.com/groenewege/vim-less.git
 git clone https://github.com/pangloss/vim-javascript.git
+git clone https://github.com/leafgarland/typescript-vim.git
+git clone https://github.com/sjbach/lusty.git
+

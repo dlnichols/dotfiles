@@ -1,22 +1,25 @@
+runtime macros/matchit.vim
 call pathogen#infect()
-
-set nocompatible
-set backupdir=~/.vim/tmp
-set showcmd
-set incsearch
-set list listchars=tab:»·,trail:·
 
 let mapleader = " "
 let g:rspec_command = "Make {spec}"
+
+syntax on
+filetype plugin indent on
+colorscheme zenburn
 
 autocmd BufNewFile,BufRead *.coffee.erb set filetype=coffee
 autocmd BufNewFile,BufRead Guardfile set filetype=ruby
 autocmd FileType coffee setl foldmethod=indent foldlevel=9 foldenable
 autocmd BufNewFile,BufRead *.rb compiler rspec
 autocmd BufNewFile,BufRead *.rb set makeprg=zeus\ rspec
-syntax on
-filetype plugin indent on
-colorscheme zenburn
+
+set nocompatible "Turn off vi compatability mode
+set backupdir=~/.vim/tmp "Everything vim should be in .vim
+set showcmd
+set incsearch
+set list listchars=tab:»·,trail:· "Show tabs and trailing spaces
+set hidden "Allow modified buffers to be hidden/background
 set list
 set nowrap
 set tabstop=2
@@ -39,10 +42,10 @@ set titlestring+=%=
 set titlestring+=%{fugitive#statusline()}
 set titlestring+=%{rvm#statusline()}
 
-map <Leader>t :call RunCurrentSpecFile()<CR>
-map <Leader>s :call RunNearestSpec()<CR>
-map <Leader>l :call RunLastSpec()<CR>
-map <Leader>a :call RunAllSpecs()<CR>
+"map <Leader>t :call RunCurrentSpecFile()<CR>
+"map <Leader>s :call RunNearestSpec()<CR>
+"map <Leader>l :call RunLastSpec()<CR>
+"map <Leader>a :call RunAllSpecs()<CR>
 
 if has('gui_running')
   set guifont=DejaVu\ Sans\ Mono\ 10

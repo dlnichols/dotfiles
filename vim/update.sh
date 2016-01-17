@@ -22,3 +22,5 @@ cd ../vim-dispatch && git pull
 cd ../vim-ruby && git pull
 cd ../vim-less && git pull
 cd ../vim-javascript && git pull
+cd ../typescript-vim && git pull
+cd ../lusty && git pull
