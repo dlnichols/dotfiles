@@ -14,18 +14,30 @@ autocmd FileType coffee setl foldmethod=indent foldlevel=9 foldenable
 autocmd BufNewFile,BufRead *.rb compiler rspec
 autocmd BufNewFile,BufRead *.rb set makeprg=zeus\ rspec
 
+"Various config
 set nocompatible "Turn off vi compatability mode
 set backupdir=~/.vim/tmp "Everything vim should be in .vim
 set showcmd
 set incsearch
 set list listchars=tab:»·,trail:· "Show tabs and trailing spaces
-set hidden "Allow modified buffers to be hidden/background
 set list
+set hidden "Allow modified buffers to be hidden/background
 set nowrap
+set wildmenu "More useful tab completion
+set wildmode=list:longest
+set ignorecase "Make / searches case insensitive unless there is a
+set smartcase  "capital letter, * searches are still case sensitive
+set scrolloff=3 "Keep more context around the cursor when scrolling
+set backupdir=~/.vim/tmp
+set directory=~/.vim/tmp
+
+"Tabs
 set tabstop=2
 set softtabstop=2
 set shiftwidth=2
 set expandtab
+
+"Status line
 set laststatus=2
 set statusline=%t       "tail of the filename
 set statusline+=[%{strlen(&fenc)?&fenc:'none'}, "file encoding
@@ -37,6 +49,8 @@ set statusline+=%y      "filetype
 set statusline+=%=      "left/right separator
 set statusline+=%c,     "cursor column
 set statusline+=%l/%L   "cursor line/total lines
+
+"Title bar
 set titlestring=%f
 set titlestring+=%=
 set titlestring+=%{fugitive#statusline()}
