@@ -8,7 +8,13 @@ alias -- -='cd -'
 
 alias history='fc -il 1'
 
-alias ls='ls --color=auto'
+if [[ `uname` == 'Darwin' ]]
+then
+  alias ls='ls -FG'
+else
+  alias ls='ls -F --color=auto'
+fi
+
 alias ll='ls -lAh'
 alias l='ls -lh'
 alias la='ls -lah'
