@@ -3,9 +3,11 @@ call pathogen#infect()
 
 let mapleader = " "
 let g:rspec_command = "Make {spec}"
+let s:uname = substitute(system("uname -s"), '\n', '', '')
 
 syntax on
 filetype plugin indent on
+set term=screen-256color
 colorscheme zenburn
 
 autocmd BufNewFile,BufRead *.coffee.erb set filetype=coffee
@@ -32,10 +34,18 @@ set backupdir=~/.vim/tmp
 set directory=~/.vim/tmp
 
 "Tabs
-set tabstop=2
-set softtabstop=2
-set shiftwidth=2
-set expandtab
+if has('unix')
+  if s:uname == 'Darwin' " OS X config
+    set tabstop=4
+    set softtabstop=4
+    set shiftwidth=4
+  else " Other unices (linux) config
+    set tabstop=2
+    set softtabstop=2
+    set shiftwidth=2
+    set expandtab
+  endif
+endif
 
 "Status line
 set laststatus=2

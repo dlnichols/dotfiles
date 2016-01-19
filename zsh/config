@@ -4,11 +4,12 @@ alias po='popd'
 alias ...='cd ../..'
 alias ....='cd ../../..'
 alias .....='cd ../../../..'
+alias ......='cd ../../../../..'
 alias -- -='cd -'
 
 alias history='fc -il 1'
 
-if [[ `uname` == 'Darwin' ]]
+if [[ `uname -s` == 'Darwin' ]]
 then
   alias ls='ls -FG'
 else
@@ -27,7 +28,12 @@ alias mf='head -n3 /proc/meminfo'
 
 alias g='git'
 
-alias ps='ps -eH'
+if [[ `uname -s` == 'Darwin' ]]
+then
+  alias ps='ps -e'
+else
+  alias ps='ps -eH'
+fi
 
 alias grep='grep --color=auto --exclude-dir=.git --exclude-dir=node_modules'
 
