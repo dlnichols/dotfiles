@@ -31,7 +31,7 @@ windows:
   - editor:
       root: ~/Workspace/builder/client
       layout: main-vertical
-      panes: vim . -S ~/.vim/sessions/builder
+      panes: vim -S ~/.vim/sessions/builder
   - test:
       root: ~/Workspace/builder/client
       panes: npm test
