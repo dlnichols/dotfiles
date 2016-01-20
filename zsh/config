@@ -38,7 +38,13 @@ function play() {
   vlc --fullscreen $@ &
 }
 
-#export GREP_COLOR='1;32'
+function irule_local() {
+  if [ $# -eq 0 ]; then
+    export IRULE_TEST_BUILDER_LOCAL=true
+  else
+    unset IRULE_TEST_BUILDER_LOCAL
+  fi
+}
 
 function zsh_stats() {
   fc -l 1 | awk '{CMD[$2]++;count++;}END { for (a in CMD)print CMD[a] " " CMD[a]/count*100 "% " a;}' | grep -v "./" | column -c3 -s " " -t | sort -nr | nl | head -n20
