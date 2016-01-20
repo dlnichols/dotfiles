@@ -12,8 +12,10 @@ alias history='fc -il 1'
 if [[ `uname -s` == 'Darwin' ]]
 then
   alias ls='ls -FG'
+  alias ps='ps -e'
 else
   alias ls='ls -F --color=auto'
+  alias ps='ps -eH'
 fi
 
 alias ll='ls -lAh'
@@ -28,14 +30,9 @@ alias mf='head -n3 /proc/meminfo'
 
 alias g='git'
 
-if [[ `uname -s` == 'Darwin' ]]
-then
-  alias ps='ps -e'
-else
-  alias ps='ps -eH'
-fi
-
 alias grep='grep --color=auto --exclude-dir=.git --exclude-dir=node_modules'
+
+alias ts='tmuxinator start'
 
 function play() {
   vlc --fullscreen $@ &

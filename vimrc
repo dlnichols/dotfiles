@@ -15,6 +15,7 @@ autocmd BufNewFile,BufRead Guardfile set filetype=ruby
 autocmd FileType coffee setl foldmethod=indent foldlevel=9 foldenable
 autocmd BufNewFile,BufRead *.rb compiler rspec
 autocmd BufNewFile,BufRead *.rb set makeprg=zeus\ rspec
+autocmd BufNewFile *.spec.ts 0r ~/.vim/skel/spec.ts
 
 "Various config
 set nocompatible "Turn off vi compatability mode

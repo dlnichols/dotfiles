@@ -31,14 +31,13 @@ windows:
   - editor:
       root: ~/Workspace/builder/client
       layout: main-vertical
-      panes:
-        -
-        - vim .
+      panes: vim . -S ~/.vim/sessions/builder
+  - test:
+      root: ~/Workspace/builder/client
+      panes: npm test
   - server:
       root: ~/Workspace/builder/server
-      panes:
-        - ../gradlew bootRun
+      panes: ../gradlew bootRun
   - device-server:
       root: ~/Workspace/device-driver-service
-      panes:
-        - ./gradlew bootRun
+      panes: ./gradlew bootRun
