@@ -1,2 +1,4 @@
 NERDTree
 wincmd w
+silent grep -o "TODO:.*" public/app/**/*.spec.ts
+copen

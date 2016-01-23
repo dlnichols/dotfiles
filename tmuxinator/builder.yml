@@ -37,7 +37,7 @@ windows:
       panes: npm test
   - server:
       root: ~/Workspace/builder/server
-      panes: # ../gradlew bootRun
+      panes: pwd
   - device-server:
       root: ~/Workspace/device-driver-service
-      panes: # ./gradlew bootRun
+      panes: pwd
