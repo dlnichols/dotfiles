@@ -38,6 +38,10 @@ function play() {
   vlc --fullscreen $@ &
 }
 
+function vs() {
+  vim -S ~/.vim/sessions/$1
+}
+
 function irule_local() {
   if [ $# -eq 0 ]; then
     export IRULE_TEST_BUILDER_LOCAL=true
