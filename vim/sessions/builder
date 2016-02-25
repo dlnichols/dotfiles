@@ -1,4 +1,4 @@
 NERDTree
 wincmd w
-silent grep -o "TODO:.*" public/app/**/*.spec.ts
+silent grep -o "TODO:.*" public/builder/**/*.spec.ts public/manager/**/*.spec.ts
 copen
