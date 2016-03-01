@@ -7,14 +7,28 @@
 	co = checkout
 	s = status
 	d = diff
+	dc = diff --cached
+	ds = diff --stat
+	f = fetch --all --prune
+	p = pull --ff-only
+	pa = pull --all --prune --ff-only
 	b = branch
 	ba = branch -a
 	r = remote -v
 	a = add --all
 	c = commit
 	showtrackedignored = ls-files -i --exclude-standard
-	dc = diff --cached
 	l = log
+	lg = log --graph --decorate
+	lgo = log --graph --decorate --oneline
+	la = log --graph --all --decorate
+	lao = log --graph --all --decorate --oneline
+	bd = "!bd() { git log `git merge-base develop HEAD`..HEAD'; }; bd"
+	bdb = "!bdb() { git log `git merge-base $2 $1`..$1; }; bdb"
+	sts = stash save
+	stl = stash list
+	std = stash drop
+	stp = stash pop
 [rebase]
 	autosquash = true
 [push]
