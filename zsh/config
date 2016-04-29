@@ -14,7 +14,7 @@ then
   alias ls='ls -FG'
   alias ps='ps -e'
 else
-  alias ls='ls -F --color=auto'
+  alias ls='ls -F --color=auto --quoting-style=literal'
   alias ps='ps -eH'
 fi
 
