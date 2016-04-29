@@ -34,19 +34,9 @@ set scrolloff=3 "Keep more context around the cursor when scrolling
 set backupdir=~/.vim/tmp
 set directory=~/.vim/tmp
 
-"Tabs
-if has('unix')
-  if s:uname == 'Darwin' " OS X config
-    set tabstop=4
-    set softtabstop=4
-    set shiftwidth=4
-  else " Other unices (linux) config
-    set tabstop=2
-    set softtabstop=2
-    set shiftwidth=2
-    set expandtab
-  endif
-endif
+set tabstop=4
+set softtabstop=4
+set shiftwidth=4
 
 "Status line
 set laststatus=2
