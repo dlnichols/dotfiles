@@ -81,10 +81,10 @@ URxvt*cursorColor:                    #DCDCCC
 ! URxvt*pointerColor2:                  color
 ! URxvt*borderColor:                    color
 ! URxvt*iconFile:                       file
-! URxvt*font: -*-terminus-medium-*-*-*-*-140-*-*-*-*-iso8859-2
-URxvt*font:                           xft:DejaVu Sans Mono:pixelsize=16
-! URxvt*boldFont: -*-terminus-bold-*-*-*-*-12-*-*-*-*-iso8859-2
-URxvt*boldFont:                       xft:DejaVu Sans Mono:bold:pixelsize=16
+!URxvt*font: -*-terminus-medium-*-*-*-*-140-*-*-*-*-iso8859-2
+URxvt*font:                           xft:inconsolata:pixelsize=28
+!URxvt*boldFont: -*-terminus-bold-*-*-*-*-140-*-*-*-*-iso8859-2
+URxvt*boldFont:                       xft:inconsolata:style=bold:pixelsize=28
 ! URxvt*italicFont: -*-terminus-medium-*-*-*-*-140-*-*-*-*-iso8859-2
 ! URxvt*boldItalicFont: -*-terminus-bold-*-*-*-*-12-*-*-*-*-iso8859-2
 ! URxvt*intensityStyles:                boolean
