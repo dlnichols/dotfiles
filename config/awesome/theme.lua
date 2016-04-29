@@ -3,7 +3,7 @@ theme = {}
 -- }}}
 
 -- {{{ Styles
-theme.font       = "DejaVu Sans 8"
+theme.font       = "Iconsolate 18"
 
 -- {{{ Colors
 theme.fg_normal  = "#DCDCCC"

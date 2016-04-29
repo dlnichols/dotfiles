@@ -51,19 +51,36 @@ local layouts = {
 -- }}}
 
 -- {{{ Wallpaper
-local wp_path = "/home/dan/workspace/wallpapers/1920x1080/"
-local scan_wp = function()
+--local wp_path = "/home/dan/workspace/wallpapers/1920x1080/"
+local wp_path = "/home/dan/workspace/wallpapers/"
+
+local scan_wp = function(path)
+  if type(path) == nil then return end
   local papers = {}
-  for file in io.popen("find " .. wp_path .. " -type f"):lines() do
+  for file in io.popen("find " .. path .. " -type f"):lines() do
     table.insert(papers, file)
   end
   return papers
 end
-local wp_files = scan_wp()
-randomize_wallpaper = function()
+
+local scan_wpf = function()
+  local folders = {}
+  for folder in io.popen("find " .. wp_path .. " -mindepth 1 -maxdepth 1 -iname '.*' -prune -o -print"):lines() do
+    folders[folder] = scan_wp(folder)
+  end
+  return folders
+end
+
+local wp_files = scan_wpf()
+
+local randomize_wallpaper = function()
   for s = 1, screen.count() do
-    local wp_index = math.random(1, #wp_files)
-    gears.wallpaper.maximized(wp_files[wp_index], s, true)
+    local geometry = math.floor(screen[s].geometry.width) .. "x" .. math.floor(screen[s].geometry.height)
+    local wp_list = wp_files[wp_path .. geometry]
+    local wp_count = #wp_list
+    local wp_index = math.random(1, wp_count)
+    gears.wallpaper.maximized(wp_list[wp_index], s, true)
+    naughty.notify({ text = "Screen " .. s .. " : " .. geometry })
   end
 end
 randomize_wallpaper()
@@ -72,7 +89,7 @@ randomize_wallpaper()
 -- {{{ Tags
 -- Define a tag table which hold all screen tags.
 local tags = {
-  names   = {     "main",      "www",          3,      "dev",      "ide",     "gimp",      "vlc",       "im",    "music" },
+  names   = {     "main",      "www",     "junk",      "dev",      "ide",     "gimp",      "vlc",       "im",    "music" },
   layouts = { layouts[1], layouts[1], layouts[1], layouts[1], layouts[1], layouts[4], layouts[1], layouts[5], layouts[4] }
 }
 for s = 1, screen.count() do
@@ -83,7 +100,7 @@ end
 -- }}}
 
 -- {{{ Menu
--- Create a laucher widget and a main menu
+--[[ Create a laucher widget and a main menu
 local myawesomemenu = {
   { "manual",      terminal .. " -e man awesome" },
   { "edit config", editor_cmd .. " " .. awesome.conffile },
@@ -102,6 +119,7 @@ local mylauncher = awful.widget.launcher({
   image = beautiful.awesome_icon,
   menu = mymainmenu
 })
+--]]
 
 -- {{{ Wibox
 -- Create a volume widget
@@ -122,7 +140,7 @@ function update_volume()
   end
   myvolume:set_markup(" V:"..volume)
 end
-update_volume()
+-- update_volume()
 
 -- Create a battery widget
 local mybattery = wibox.widget.textbox()
@@ -153,7 +171,7 @@ function update_battery()
   end
   mybattery:set_markup(" B:"..status)
 end
-update_battery()
+-- update_battery()
 
 local mybattery_timer = timer({ timeout = 3 })
 mybattery_timer:connect_signal("timeout", update_battery)
@@ -253,7 +271,7 @@ for s = 1, screen.count() do
 
   -- Widgets that are aligned to the left
   local left_layout = wibox.layout.fixed.horizontal()
-  left_layout:add(mylauncher)
+  --left_layout:add(mylauncher)
   left_layout:add(mytaglist[s])
   left_layout:add(mypromptbox[s])
 
@@ -278,7 +296,7 @@ end
 
 -- {{{ Mouse bindings
 root.buttons(awful.util.table.join(
-  awful.button({ }, 3, function() mymainmenu:toggle() end),
+  --awful.button({ }, 3, function() mymainmenu:toggle() end),
   awful.button({ }, 4, awful.tag.viewnext),
   awful.button({ }, 5, awful.tag.viewprev)
 ))
@@ -316,7 +334,7 @@ local globalkeys = awful.util.table.join(
     awful.client.focus.byidx(-1)
     if client.focus then client.focus:raise() end
   end),
-  awful.key({ modkey,           }, "w", function() mymainmenu:show() end),
+  --awful.key({ modkey,           }, "w", function() mymainmenu:show() end),
 
   -- Layout manipulation
   awful.key({ modkey, "Shift"   }, "j", function() awful.client.swap.byidx(  1)    end),
