@@ -1,1 +1,1 @@
-/usr/bin/chromium --profile-directory=Work "$@" &
+/usr/bin/chromium --profile-directory=iRule "$@" &

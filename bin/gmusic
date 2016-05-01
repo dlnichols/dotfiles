@@ -1,1 +1,1 @@
-/usr/bin/chromium --app-id=icppfcnhkcmnfdhfhphakoifcfokfdhg --profile-directory=Default &
+/usr/bin/google-chrome-stable --app-id=icppfcnhkcmnfdhfhphakoifcfokfdhg --profile-directory=Default &

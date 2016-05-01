@@ -51,7 +51,6 @@ local layouts = {
 -- }}}
 
 -- {{{ Wallpaper
---local wp_path = "/home/dan/workspace/wallpapers/1920x1080/"
 local wp_path = "/home/dan/workspace/wallpapers/"
 
 local scan_wp = function(path)
@@ -77,10 +76,12 @@ local randomize_wallpaper = function()
   for s = 1, screen.count() do
     local geometry = math.floor(screen[s].geometry.width) .. "x" .. math.floor(screen[s].geometry.height)
     local wp_list = wp_files[wp_path .. geometry]
-    local wp_count = #wp_list
-    local wp_index = math.random(1, wp_count)
-    gears.wallpaper.maximized(wp_list[wp_index], s, true)
-    naughty.notify({ text = "Screen " .. s .. " : " .. geometry })
+    if wp_list ~= nil then -- No wallpapers for this geometry
+      local wp_count = #wp_list
+      local wp_index = math.random(1, wp_count)
+      gears.wallpaper.maximized(wp_list[wp_index], s, true)
+      --naughty.notify({ text = "Screen " .. s .. " : " .. geometry })
+    end
   end
 end
 randomize_wallpaper()
@@ -98,28 +99,6 @@ for s = 1, screen.count() do
   awful.tag.incmwfact(0.25, tags[s][2])
 end
 -- }}}
-
--- {{{ Menu
---[[ Create a laucher widget and a main menu
-local myawesomemenu = {
-  { "manual",      terminal .. " -e man awesome" },
-  { "edit config", editor_cmd .. " " .. awesome.conffile },
-  { "restart",     awesome.restart },
-  { "quit",        awesome.quit }
-}
-
-local mymainmenu = awful.menu({
-  items = {
-    { "awesome",       myawesomemenu, beautiful.awesome_icon },
-    { "open terminal", terminal }
-  }
-})
-
-local mylauncher = awful.widget.launcher({
-  image = beautiful.awesome_icon,
-  menu = mymainmenu
-})
---]]
 
 -- {{{ Wibox
 -- Create a volume widget
@@ -140,7 +119,7 @@ function update_volume()
   end
   myvolume:set_markup(" V:"..volume)
 end
--- update_volume()
+update_volume()
 
 -- Create a battery widget
 local mybattery = wibox.widget.textbox()
@@ -150,11 +129,11 @@ function update_battery()
   if fh == nil then
     status = "A/C"
   else
-    local fnow    = io.open("/sys/class/power_supply/BAT0/energy_now")
+    local fnow    = io.open("/sys/class/power_supply/BAT0/charge_now")
     local enow    = fnow:read()
     fnow:close()
 
-    local ffull   = io.open("/sys/class/power_supply/BAT0/energy_full")
+    local ffull   = io.open("/sys/class/power_supply/BAT0/charge_full")
     local efull   = ffull:read()
     ffull:close()
 
@@ -171,7 +150,7 @@ function update_battery()
   end
   mybattery:set_markup(" B:"..status)
 end
--- update_battery()
+update_battery()
 
 local mybattery_timer = timer({ timeout = 3 })
 mybattery_timer:connect_signal("timeout", update_battery)
@@ -180,11 +159,11 @@ mybattery_timer:start()
 -- Create a WiFi widget
 local mywifi = wibox.widget.textbox()
 function update_wifi()
-  local fh = io.popen("awk 'NR==3 {print $3 \"%\"}' /proc/net/wireless | sed 's/\\.//g'")
+  local fh = io.popen("sudo /usr/bin/cat /proc/net/wireless | awk 'NR==3 {print $3}' | sed 's/\\.//'")
   local strength = fh:read()
-  fh:close()
+  local exval = {fh:close()}
   if strength then
-    mywifi:set_markup(" W:"..strength)
+    mywifi:set_markup(" W:" .. strength .. "%")
   else
     mywifi:set_markup(" W:--")
   end
@@ -463,12 +442,8 @@ awful.rules.rules = {
                  },
     callback   =   awful.client.setslave
   },
-  -- Moves gmusic to the last tab (max)
-  -- "crx_icppfcnhkcmnfdhfhphakoifcfokfdhg", "Chromium"
-  { rule = { class = "Chromium", instance = "crx_icppfcnhkcmnfdhfhphakoifcfokfdhg" },
-    properties = { tag = tags[1][9],
-                   switchtotag = true
-                 }
+  { rule = { instance = "crx_icppfcnhkcmnfdhfhphakoifcfokfdhg" },
+    properties = { tag = tags[1][9] }
   },
   -- Disable hinting for URxvt (so it doesn't leave weird borders) and opacify it
   { rule = { class = "URxvt" },
@@ -506,10 +481,10 @@ client.connect_signal("manage", function(c, startup)
     -- awful.client.setslave(c)
 
     -- Put windows in a smart way, only if they does not set an initial position.
-    if not c.size_hints.user_position and not c.size_hints.program_position then
-      awful.placement.no_overlap(c)
-      awful.placement.no_offscreen(c)
-    end
+    --if not c.size_hints.user_position and not c.size_hints.program_position then
+    --  awful.placement.no_overlap(c)
+    awful.placement.no_offscreen(c)
+    --end
   end
 
   local titlebars_enabled = false

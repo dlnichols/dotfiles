@@ -1,3 +1,0 @@
-#!/bin/sh
-cd /home/dan/workspace/h_media
-vim -S /home/dan/.vim/h_media.session "$@"
