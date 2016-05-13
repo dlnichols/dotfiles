@@ -19,11 +19,13 @@
 	c = commit
 	showtrackedignored = ls-files -i --exclude-standard
 	l = log
+	lo = log --oneline
 	lg = log --graph --decorate
 	lgo = log --graph --decorate --oneline
 	la = log --graph --all --decorate
 	lao = log --graph --all --decorate --oneline
-	bd = "!bd() { git log `git merge-base develop HEAD`..HEAD'; }; bd"
+	changelog = "!changelog() { git log --oneline `perl -nle 'print $& if m{COMMIT \\K.*}' VERSION`..HEAD; }; changelog"
+	bd = "!bd() { git log `git merge-base develop HEAD`..HEAD; }; bd"
 	bdb = "!bdb() { git log `git merge-base $2 $1`..$1; }; bdb"
 	sts = stash save
 	stl = stash list
@@ -36,3 +38,4 @@
 [core]
 	editor = vim
 	pager = less -F -X
+	excludesfile = /Users/dan/.gitignore

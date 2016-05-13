@@ -1,6 +1,5 @@
-# Load ZSH (only for interactive shells)
+# Load ZSH config (only for interactive shells)
 [[ -s "$HOME/.dotfiles/zsh/config" ]] && source "$HOME/.dotfiles/zsh/config"
 
-
-export NVM_DIR="/home/dan/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+# Load AWS Autocompletion
+[[ -s "/usr/local/bin/aws_zsh_completer.sh" ]] && source "/usr/local/bin/aws_zsh_completer.sh"
