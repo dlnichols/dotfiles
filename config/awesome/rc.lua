@@ -75,12 +75,17 @@ local wp_files = scan_wpf()
 local randomize_wallpaper = function()
   for s = 1, screen.count() do
     local geometry = math.floor(screen[s].geometry.width) .. "x" .. math.floor(screen[s].geometry.height)
+    if (geometry == "2025x3600") then
+        geometry = "1080x1920"
+    elseif (geometry == "2880x1620") then
+        geometry = "1920x1080"
+    end
     local wp_list = wp_files[wp_path .. geometry]
     if wp_list ~= nil then -- No wallpapers for this geometry
       local wp_count = #wp_list
       local wp_index = math.random(1, wp_count)
       gears.wallpaper.maximized(wp_list[wp_index], s, true)
-      --naughty.notify({ text = "Screen " .. s .. " : " .. geometry })
+      -- naughty.notify({ text = "Screen " .. s .. " : " .. geometry })
     end
   end
 end
@@ -91,7 +96,7 @@ randomize_wallpaper()
 -- Define a tag table which hold all screen tags.
 local tags = {
   names   = {     "main",      "www",     "junk",      "dev",      "ide",     "gimp",      "vlc",       "im",    "music" },
-  layouts = { layouts[1], layouts[1], layouts[1], layouts[1], layouts[1], layouts[4], layouts[1], layouts[5], layouts[4] }
+  layouts = { layouts[1], layouts[1], layouts[3], layouts[1], layouts[1], layouts[4], layouts[1], layouts[5], layouts[4] }
 }
 for s = 1, screen.count() do
   -- Each screen has its own tag table.

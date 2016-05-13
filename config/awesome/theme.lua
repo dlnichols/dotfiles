@@ -3,7 +3,8 @@ theme = {}
 -- }}}
 
 -- {{{ Styles
-theme.font       = "Iconsolate 18"
+theme.font       = "Iconsolata 18"
+theme.small_font = "Iconsolata 12"
 
 -- {{{ Colors
 theme.fg_normal  = "#DCDCCC"
