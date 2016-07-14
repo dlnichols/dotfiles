@@ -31,6 +31,8 @@
 	stl = stash list
 	std = stash drop
 	stp = stash pop
+	sup = submodule update --recursive
+	m = merge --ff-only
 [rebase]
 	autosquash = true
 [push]

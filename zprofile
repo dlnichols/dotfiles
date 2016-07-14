@@ -1,13 +1,13 @@
 typeset -U path
-path=($path[@] ~/bin ~/.rvm/bin ~/Android/Sdk/platform-tools)
+path=($HOME/bin $HOME/.rvm/bin $HOME/Android/Sdk/platform-tools /usr/local/heroku/bin $path[@])
 export EDITOR="vim"
 #export IRULE_TEST_BUILDER_LOCAL=true
 export NVM_DIR="/home/dan/.nvm"
-
-# Load RVM
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
+export ANDROID_HOME="/home/dan/Android/Sdk"
+export ANDROID_NDK="/home/dan/workspace/android-ndk-r12"
 
 # Load NVM
 [[ -s "$HOME/.nvm/nvm.sh" ]] && source "$HOME/.nvm/nvm.sh"
 
-eval $( gpg-agent --daemon )
+# Load RVM
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"

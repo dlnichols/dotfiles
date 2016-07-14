@@ -22,7 +22,7 @@ alias ll='ls -lAh'
 alias l='ls -lh'
 alias la='ls -lah'
 
-alias du='du -hd1'
+alias d.='du -hd1'
 
 alias df='df -h'
 
@@ -34,12 +34,20 @@ alias grep='grep --color=auto --exclude-dir=.git --exclude-dir=node_modules --ex
 
 alias ts='tmuxinator start'
 
+function nm24() {
+  sudo nmap -sP 192.168.7.0/24
+}
+
 function play() {
   vlc --fullscreen $@ &
 }
 
 function vs() {
   vim -S ~/.vim/sessions/$1
+}
+
+function ssb() {
+  ssh -l irule 192.168.$1
 }
 
 function irule_local() {

@@ -36,8 +36,8 @@ local modkey = "Mod4"
 -- Table of layouts to cover with awful.layout.inc, order matters.
 local layouts = {
   awful.layout.suit.tile,
-  awful.layout.suit.tile.left,
---  awful.layout.suit.tile.bottom,
+--  awful.layout.suit.tile.left,
+  awful.layout.suit.tile.bottom,
 --  awful.layout.suit.tile.top,
   awful.layout.suit.fair,
 --  awful.layout.suit.fair.horizontal,
@@ -50,8 +50,18 @@ local layouts = {
 }
 -- }}}
 
+-- {{{ System
+local mysysinfo = function()
+  naughty.notify({ text = "PATH: " .. os.getenv("PATH") })
+  naughty.notify({ text = "USER: " .. os.getenv("USER") })
+  naughty.notify({ text = "SHELL: " .. os.getenv("SHELL") })
+  naughty.notify({ text = "QT_IM_MODULE: " .. os.getenv("QT_IM_MODULE") })
+end
+mysysinfo()
+-- }}}
+
 -- {{{ Wallpaper
-local wp_path = "/home/dan/workspace/wallpapers/"
+local wp_path = "/home/dan/projects/wallpapers/"
 
 local scan_wp = function(path)
   if type(path) == nil then return end
@@ -75,7 +85,7 @@ local wp_files = scan_wpf()
 local randomize_wallpaper = function()
   for s = 1, screen.count() do
     local geometry = math.floor(screen[s].geometry.width) .. "x" .. math.floor(screen[s].geometry.height)
-    if (geometry == "2025x3600") then
+    if (geometry == "1620x2880") then
         geometry = "1080x1920"
     elseif (geometry == "2880x1620") then
         geometry = "1920x1080"
@@ -85,7 +95,7 @@ local randomize_wallpaper = function()
       local wp_count = #wp_list
       local wp_index = math.random(1, wp_count)
       gears.wallpaper.maximized(wp_list[wp_index], s, true)
-      -- naughty.notify({ text = "Screen " .. s .. " : " .. geometry })
+      naughty.notify({ text = "Screen " .. s .. " : " .. geometry })
     end
   end
 end
@@ -304,6 +314,7 @@ local globalkeys = awful.util.table.join(
 
   -- Change the wallpaper
   awful.key({ modkey            }, "p", randomize_wallpaper ),
+  awful.key({ modkey            }, "s", mysysinfo ),
 
   -- Default key mappings
   awful.key({ modkey,           }, "Left",   awful.tag.viewprev       ),
@@ -345,8 +356,8 @@ local globalkeys = awful.util.table.join(
   awful.key({ modkey, "Shift"   }, "l",     function() awful.tag.incnmaster(-1)      end),
   awful.key({ modkey, "Control" }, "h",     function() awful.tag.incncol( 1)         end),
   awful.key({ modkey, "Control" }, "l",     function() awful.tag.incncol(-1)         end),
-  awful.key({ modkey,           }, "space", function() awful.layout.inc(layouts,  1) end),
-  awful.key({ modkey, "Shift"   }, "space", function() awful.layout.inc(layouts, -1) end),
+  awful.key({ modkey,           }, "/", function() awful.layout.inc(layouts,  1) end),
+  awful.key({ modkey, "Shift"   }, "/", function() awful.layout.inc(layouts, -1) end),
 
   awful.key({ modkey, "Control" }, "n", awful.client.restore),
 
@@ -369,7 +380,7 @@ local clientkeys = awful.util.table.join(
   -- Default key mappings
   awful.key({ modkey,           }, "f",      function(c) c.fullscreen = not c.fullscreen  end),
   awful.key({ modkey, "Shift"   }, "c",      function(c) c:kill()                         end),
-  awful.key({ modkey, "Control" }, "space",  awful.client.floating.toggle                    ),
+  awful.key({ modkey, "Control" }, "/",  awful.client.floating.toggle                    ),
   awful.key({ modkey, "Control" }, "Return", function(c) c:swap(awful.client.getmaster()) end),
   awful.key({ modkey,           }, "o",      awful.client.movetoscreen                       ),
   awful.key({ modkey,           }, "t",      function(c) c.ontop = not c.ontop            end),

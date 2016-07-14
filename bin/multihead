@@ -1,0 +1,2 @@
+#!/bin/zsh
+xrandr --fb 4905x3600 --output HDMI-3 --mode 1920x1080 --scale 1.5x1.5 --pos 2025x0 --output eDP-1 --pos 2025x1800 --output DP-1 --mode 1920x1080 --pos 0x0 --rotate left --scale 1.5x1.5

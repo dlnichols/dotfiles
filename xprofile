@@ -1,8 +1,20 @@
-#!/bin/sh
+#!/bin/zsh
 
-export GTK_IM_MODULE=ibus
-export XMODIFIERS=@im=ibus
-export QT_IM_MODULE=ibus
-xset -dpms s off s noblank
-ibus-daemon -drx
-unagi &
+if [[ "$XDG_SESSION_DESKTOP" == "awesome" ]]; then
+  export PATH="$HOME/bin:$PATH"
+
+  # Turn off screen blanking
+  xset -dpms s off s noblank
+
+  # Setup the input bus for CJK input
+  export GTK_IM_MODULE=ibus
+  export XMODIFIERS=@im=ibus
+  export QT_IM_MODULE=ibus
+  ibus-daemon -drx
+
+  # Enable XScreensaver
+  xscreensaver -no-splash &
+
+  # Enable window compositing
+  unagi &
+fi

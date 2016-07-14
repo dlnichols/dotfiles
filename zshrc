@@ -3,3 +3,6 @@
 
 # Load AWS Autocompletion
 [[ -s "/usr/local/bin/aws_zsh_completer.sh" ]] && source "/usr/local/bin/aws_zsh_completer.sh"
+
+# Load thefuck alias
+eval $(thefuck --alias)
