@@ -4,6 +4,7 @@ call pathogen#infect()
 let mapleader = " "
 let g:rspec_command = "Make {spec}"
 let s:uname = substitute(system("uname -s"), '\n', '', '')
+let g:SuperTabDefaultCompletionType = 'context'
 
 syntax on
 filetype plugin indent on
@@ -20,6 +21,7 @@ autocmd BufNewFile *.spec.ts 0r ~/.vim/skel/spec.ts
 "Various config
 set nocompatible "Turn off vi compatability mode
 set backupdir=~/.vim/tmp "Everything vim should be in .vim
+set directory=~/.vim/tmp
 set showcmd
 set incsearch
 set list listchars=tab:»·,trail:· "Show tabs and trailing spaces
@@ -27,16 +29,15 @@ set list
 set hidden "Allow modified buffers to be hidden/background
 set nowrap
 set wildmenu "More useful tab completion
-set wildmode=list:longest
+set wildmode=list:longest,full
 set ignorecase "Make / searches case insensitive unless there is a
 set smartcase  "capital letter, * searches are still case sensitive
 set scrolloff=3 "Keep more context around the cursor when scrolling
-set backupdir=~/.vim/tmp
-set directory=~/.vim/tmp
 
 set tabstop=4
 set softtabstop=4
 set shiftwidth=4
+autocmd BufNewFile,BufRead ~/projects/* set tabstop=2 shiftwidth=2 softtabstop=2 expandtab
 
 "Status line
 set laststatus=2

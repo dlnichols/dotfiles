@@ -6,8 +6,9 @@ export NVM_DIR="/home/dan/.nvm"
 export ANDROID_HOME="/home/dan/Android/Sdk"
 export ANDROID_NDK="/home/dan/workspace/android-ndk-r12"
 
-# Load NVM
+# Load NVM and AVN
 [[ -s "$HOME/.nvm/nvm.sh" ]] && source "$HOME/.nvm/nvm.sh"
+[[ -s "$HOME/.avn/bin/avn.sh" ]] && source "$HOME/.avn/bin/avn.sh"
 
 # Load RVM
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"

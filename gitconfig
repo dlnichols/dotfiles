@@ -14,6 +14,7 @@
 	pa = pull --all --prune --ff-only
 	b = branch
 	ba = branch -a
+	bad = branch -a -r --merged develop
 	r = remote -v
 	a = add --all
 	c = commit

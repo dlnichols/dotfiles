@@ -1,6 +1,6 @@
 #!/bin/zsh
 
-if [[ "$XDG_SESSION_DESKTOP" == "awesome" ]]; then
+#if [[ "$XDG_SESSION_DESKTOP" == "awesome" ]]; then
   export PATH="$HOME/bin:$PATH"
 
   # Turn off screen blanking
@@ -17,4 +17,4 @@ if [[ "$XDG_SESSION_DESKTOP" == "awesome" ]]; then
 
   # Enable window compositing
   unagi &
-fi
+#fi

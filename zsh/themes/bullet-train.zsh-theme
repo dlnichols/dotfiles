@@ -103,7 +103,7 @@ fi
 
 # NVM
 if [ ! -n "${BULLETTRAIN_NVM_SHOW+1}" ]; then
-  BULLETTRAIN_NVM_SHOW=false
+  BULLETTRAIN_NVM_SHOW=true
 fi
 if [ ! -n "${BULLETTRAIN_NVM_BG+1}" ]; then
   BULLETTRAIN_NVM_BG=green
@@ -112,7 +112,7 @@ if [ ! -n "${BULLETTRAIN_NVM_FG+1}" ]; then
   BULLETTRAIN_NVM_FG=white
 fi
 if [ ! -n "${BULLETTRAIN_NVM_PREFIX+1}" ]; then
-  BULLETTRAIN_NVM_PREFIX="⬡ "
+  BULLETTRAIN_NVM_PREFIX="▶ "
 fi
 
 # RUBY
@@ -123,7 +123,7 @@ if [ ! -n "${BULLETTRAIN_RUBY_BG+1}" ]; then
   BULLETTRAIN_RUBY_BG=magenta
 fi
 if [ ! -n "${BULLETTRAIN_RUBY_FG+1}" ]; then
-  BULLETTRAIN_RUBY_FG=white
+  BULLETTRAIN_RUBY_FG=black
 fi
 if [ ! -n "${BULLETTRAIN_RUBY_PREFIX+1}" ]; then
   BULLETTRAIN_RUBY_PREFIX=♦️
@@ -151,7 +151,7 @@ if [ ! -n "${BULLETTRAIN_DIR_BG+1}" ]; then
   BULLETTRAIN_DIR_BG=blue
 fi
 if [ ! -n "${BULLETTRAIN_DIR_FG+1}" ]; then
-  BULLETTRAIN_DIR_FG=white
+  BULLETTRAIN_DIR_FG=black
 fi
 if [ ! -n "${BULLETTRAIN_DIR_CONTEXT_SHOW+1}" ]; then
   BULLETTRAIN_DIR_CONTEXT_SHOW=false

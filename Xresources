@@ -82,9 +82,9 @@ URxvt*cursorColor:                    #DCDCCC
 ! URxvt*borderColor:                    color
 ! URxvt*iconFile:                       file
 !URxvt*font: -*-terminus-medium-*-*-*-*-140-*-*-*-*-iso8859-2
-URxvt*font:                           xft:inconsolata for powerline:pixelsize=28
+URxvt*font:                           xft:inconsolata for powerline:pixelsize=28,xft:PragmataPro:pixelsize=28
 !URxvt*boldFont: -*-terminus-bold-*-*-*-*-140-*-*-*-*-iso8859-2
-URxvt*boldFont:                       xft:inconsolata for powerline:style=bold:pixelsize=28
+URxvt*boldFont:                       xft:inconsolata for powerline:style=bold:pixelsize=28,xft:PragmataPro:pixelsize=28
 ! URxvt*italicFont: -*-terminus-medium-*-*-*-*-140-*-*-*-*-iso8859-2
 ! URxvt*boldItalicFont: -*-terminus-bold-*-*-*-*-12-*-*-*-*-iso8859-2
 ! URxvt*intensityStyles:                boolean
@@ -150,4 +150,4 @@ URxvt*matcher.button:                 1
 ! URxvt*tab-fg:                         colour
 ! URxvt*tabbar-bg:                      colour
 ! URxvt*tabbar-fg:                      colour
-URxvt*url-launcher:                   cdefault
+URxvt*url-launcher:                   google-chrome-stable

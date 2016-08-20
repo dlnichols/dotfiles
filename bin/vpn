@@ -1,0 +1,36 @@
+#!/bin/bash
+if [[ $EUID -ne 0 ]]; then
+  echo "This script needs root privileges."
+  exec sudo -E "$0" ${1+"$@"}
+fi
+
+case "$1" in
+  "up"|"start")
+    systemctl start strongswan
+    sleep 3
+    ipsec up irule
+    sleep 3
+    systemctl start xl2tpd
+    echo "cirulevpn" | tee /var/run/xl2tpd/l2tp-control
+    until [[ "x$ROUTEIP" != "x" ]]; do
+      sleep 3
+      ROUTEIP=$(ip addr show dev ppp0 | grep inet | awk '{print $2}')
+      echo "Route: $ROUTEIP"
+    done
+    ip route add 10.0.0.0/16 via $ROUTEIP dev ppp0
+    ;;
+  "down"|"stop")
+    ip route del 10.0.0.0/16
+    echo "dirulevpn" | tee /var/run/xl2tpd/l2tp-control
+    systemctl stop xl2tpd
+    ipsec down irule
+    ipsec stop
+    systemctl stop strongswan
+    ;;
+  "status")
+    echo "Not yet implemented"
+    ;;
+  *)
+    echo "Unknown option: $1"
+    ;;
+esac

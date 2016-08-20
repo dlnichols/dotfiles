@@ -55,7 +55,6 @@ local mysysinfo = function()
   naughty.notify({ text = "PATH: " .. os.getenv("PATH") })
   naughty.notify({ text = "USER: " .. os.getenv("USER") })
   naughty.notify({ text = "SHELL: " .. os.getenv("SHELL") })
-  naughty.notify({ text = "QT_IM_MODULE: " .. os.getenv("QT_IM_MODULE") })
 end
 mysysinfo()
 -- }}}
