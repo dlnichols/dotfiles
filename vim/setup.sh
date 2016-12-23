@@ -24,5 +24,7 @@ git clone https://github.com/vim-ruby/vim-ruby.git
 git clone https://github.com/groenewege/vim-less.git
 git clone https://github.com/pangloss/vim-javascript.git
 git clone https://github.com/leafgarland/typescript-vim.git
-git clone https://github.com/ervandew/supertab.git
 git clone https://github.com/ctrlpvim/ctrlp.vim.git
+git clone https://github.com/airblade/vim-gitgutter.git
+git clone https://github.com/Valloric/YouCompleteMe.git
+git clone https://github.com/mhinz/vim-hugefile.git

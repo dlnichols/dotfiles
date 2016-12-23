@@ -4,7 +4,11 @@ call pathogen#infect()
 let mapleader = " "
 let g:rspec_command = "Make {spec}"
 let s:uname = substitute(system("uname -s"), '\n', '', '')
-let g:SuperTabDefaultCompletionType = 'context'
+let g:EclimCompletionMethod = 'omnifunc'
+let g:ctrlp_max_files=20000
+let g:ctrlp_custom_ignore = {
+  \ 'dir': '\v[\/](build|node_modules)$'
+  \ }
 
 syntax on
 filetype plugin indent on

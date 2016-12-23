@@ -1,0 +1,2 @@
+#!/bin/bash -v
+ANDROID_SERIAL=79234d82 ~/projects/adb-sync/adb-sync -R /sdcard/Music/ ~/Music/

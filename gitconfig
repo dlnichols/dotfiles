@@ -14,7 +14,7 @@
 	pa = pull --all --prune --ff-only
 	b = branch
 	ba = branch -a
-	bad = branch -a -r --merged develop
+	bad = branch -a -r --merged origin/develop
 	r = remote -v
 	a = add --all
 	c = commit
@@ -34,6 +34,9 @@
 	stp = stash pop
 	sup = submodule update --recursive
 	m = merge --ff-only
+	mf = merge --ff-only
+	mff = merge --ff-only
+	mfo = merge --ff-only origin
 [rebase]
 	autosquash = true
 [push]
