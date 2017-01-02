@@ -26,5 +26,4 @@ cd ../vim-javascript && git pull
 cd ../typescript-vim && git pull
 cd ../ctrlp.vim && git pull
 cd ../vim-gitgutter && git pull
-cd ../YouCompleteMe && git pull
 cd ../vim-hugefile && git pull

@@ -32,7 +32,7 @@
 	stl = stash list
 	std = stash drop
 	stp = stash pop
-	sup = submodule update --recursive
+	sup = submodule update --init --recursive
 	m = merge --ff-only
 	mf = merge --ff-only
 	mff = merge --ff-only

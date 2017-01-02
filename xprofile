@@ -1,6 +1,6 @@
 #!/bin/zsh
 
-#if [[ "$XDG_SESSION_DESKTOP" == "awesome" ]]; then
+if [[ "$XDG_SESSION_DESKTOP" == "awesome" ]]; then
   export PATH="$HOME/bin:$PATH"
 
   # Turn off screen blanking
@@ -17,4 +17,11 @@
 
   # Enable window compositing
   unagi &
-#fi
+elif [[ "$XDG_SESSION_DESKTOP" == "gnome" ]]; then
+  # Setup the input bus for CJK input
+  export GTK_IM_MODULE=ibus
+  export XMODIFIERS=@im=ibus
+  export QT_IM_MODULE=ibus
+  ibus-daemon -drx
+fi
+
