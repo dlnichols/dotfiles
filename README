@@ -1,2 +1,0 @@
-Running setup.sh will link most files, but some will need to be copied to the
-appropriate places manually. Right now this is all files under ./etc and ./usr
