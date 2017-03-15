@@ -1,0 +1,11 @@
+#!/bin/bash
+echo "These branches are not merged, but are stale:"
+#egrep -v "(^\*|master|develop|release)" | sed 's/origin\//:/'
+for branch in $(git branch --remote --no-merged origin/develop); do
+  commits=$(git log -1 --oneline --since='30 days ago' $branch)
+  if [[ -z $commits ]]; then
+    echo $(git log -1 --format="%aN" --abbrev-commit $branch) -- $branch
+  fi
+done
+
+exit 1;

@@ -26,6 +26,8 @@
 	la = log --graph --all --decorate
 	lao = log --graph --all --decorate --oneline
 	changelog = "!changelog() { git log --oneline `perl -nle 'print $& if m{COMMIT \\K.*}' VERSION`..HEAD; }; changelog"
+	cl = "!lasttag() { git log --oneline `git describe --abbrev=0`..; }; lasttag"
+	cl0 = "!lasttag() { git log --oneline --format='%s' `git describe --abbrev=0`..; }; lasttag"
 	bd = "!bd() { git log `git merge-base develop HEAD`..HEAD; }; bd"
 	bdb = "!bdb() { git log `git merge-base $2 $1`..$1; }; bdb"
 	sts = stash save

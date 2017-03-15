@@ -1,0 +1,19 @@
+#!/usr/bin/bash -e
+
+if (($# != 1)); then
+	echo "Needs version argument"
+	exit 1
+fi
+
+new_version=${1}
+version=$(git describe --abbrev=0)
+changelog=/tmp/changelog
+
+echo -e "VERSION ${new_version#v}\n" > $changelog
+git log --oneline --format='%s' $version.. >> $changelog
+echo | cat - CHANGELOG >> $changelog
+mv $changelog CHANGELOG
+vim CHANGELOG
+git add CHANGELOG
+git commit -m "Prep for ${new_version} release" --edit
+git tag -a ${new_version}
