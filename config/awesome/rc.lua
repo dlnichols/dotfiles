@@ -116,7 +116,11 @@ menubar.utils.terminal = terminal -- Set the terminal for applications that requ
 
 -- {{{ Wibar
 -- Create volume widget
--- TODO
+myvolume = wibox.widget.textbox()
+vicious.register(myvolume, vicious.widgets.volume,
+  function(widget, args)
+    return " V:"..args[1]..args[2]
+  end, 2, "Master")
 
 -- Create battery widget
 mybattery = wibox.widget.textbox()
@@ -231,6 +235,7 @@ awful.screen.connect_for_each_screen(function(s)
     { -- Right widgets
       layout = wibox.layout.fixed.horizontal,
       wibox.widget.systray(),
+      myvolume,
       mytextclock,
       mybattery,
       s.mylayoutbox,
@@ -248,53 +253,82 @@ root.buttons(awful.util.table.join(
 -- }}}
 
 -- {{{ Key bindings
+backlight_actual = "/sys/class/backlight/intel_backlight/actual_brightness"
+backlight        = "/sys/class/backlight/intel_backlight/brightness"
+backlight_maxf   = "/sys/class/backlight/intel_backlight/max_brightness"
+
+local f = io.open(backlight_actual, "rb")
+backlight_value = f:read("*all")
+f:close()
+
+local f = io.open(backlight_maxf, "rb")
+backlight_max   = tonumber(f:read("*all"))
+f:close()
+
 globalkeys = awful.util.table.join(
   -- Change volume
-  awful.key({                   }, "XF86AudioRaiseVolume",
-            function()
-              awful.util.spawn("amixer set Master 2%+", false)
-              --update_volume()
-              --TODO
-            end,
+  awful.key({ }, "XF86AudioRaiseVolume",
+            function() awful.util.spawn("amixer set Master 2%+", false) end,
             {description = "increase volume", group = "awesome"}),
-  awful.key({                   }, "XF86AudioLowerVolume",
-            function()
-              awful.util.spawn("amixer set Master 2%+", false)
-              --update_volume()
-              --TODO
-            end,
+  awful.key({ }, "XF86AudioLowerVolume",
+            function() awful.util.spawn("amixer set Master 2%-", false) end,
             {description = "decrease volume", group = "awesome"}),
-  awful.key({                   }, "XF86AudioMute",
-            function()
-              awful.util.spawn("amixer set Master toggle", false)
-              --update_volume()
-              --TODO
-            end,
+  awful.key({ }, "XF86AudioMute",
+            function() awful.util.spawn("amixer set Master toggle", false) end,
             {description = "mute", group = "awesome"}),
 
+  -- Change brightness
+  awful.key({ }, "XF86MonBrightnessUp",
+            function()
+              backlight_value = backlight_value + 100
+              if (0 > backlight_max) then
+                backlight_value = backlight_max
+              end
+              os.execute("echo "..string.format("%u", backlight_value).." >> "..backlight, false)
+            end,
+            {description = "increase brightness", group = "awesome"}),
+  awful.key({ }, "XF86MonBrightnessDown",
+            function()
+              backlight_value = backlight_value - 100
+              if (backlight_value < 0) then
+                backlight_value = 0
+              end
+              os.execute("echo "..string.format("%u", backlight_value).." >> "..backlight, false)
+            end,
+            {description = "decrease brightness", group = "awesome"}),
+
+  -- Take screenshot
+  awful.key({        }, "Print",
+            function()
+              file = "\"/home/dan/Screens/"..os.date("%Y-%m-%d_%H-%M-%S").."_root.png\""
+              naughty.notify({ title = "Screenshot (Window: root)", text = file })
+              awful.util.spawn("import -window root "..file)
+            end,
+            {description = "take screenshot (root)", group = "awesome"}),
+
   -- Change the wallpaper
-  awful.key({ modkey            }, "p", randomize_wallpapers),
+  awful.key({ modkey }, "p", randomize_wallpapers),
 
   -- Default key mappings
-  awful.key({ modkey,           }, "s",
+  awful.key({ modkey }, "s",
             hotkeys_popup.show_help,
             {description = "show help", group = "awesome"}),
-  awful.key({ modkey,           }, "Left",
+  awful.key({ modkey }, "Left",
             awful.tag.viewprev,
             {description = "view previous", group = "tag"}),
-  awful.key({ modkey,           }, "Right",
+  awful.key({ modkey }, "Right",
             awful.tag.viewnext,
             {description = "view next", group = "tag"}),
-  awful.key({ modkey,           }, "Escape",
+  awful.key({ modkey }, "Escape",
             awful.tag.history.restore,
             {description = "go back", group = "tag"}),
-  awful.key({ modkey,           }, "j",
+  awful.key({ modkey }, "j",
             function() awful.client.focus.byidx(1) end,
             {description = "focus next by index", group = "client"}),
-  awful.key({ modkey,           }, "k",
+  awful.key({ modkey }, "k",
             function() awful.client.focus.byidx(-1) end,
             {description = "focus previous by index", group = "client"}),
-  awful.key({ modkey,           }, "w",
+  awful.key({ modkey }, "w",
             function() mymainmenu:show() end,
             {description = "show main menu", group = "awesome"}),
 
@@ -336,7 +370,6 @@ globalkeys = awful.util.table.join(
   awful.key({ modkey, "Control", "Shift" }, "q",
             function() awful.util.spawn("systemctl poweroff") end,
             {description = "shutdown", group = "awesome"}),
-
   awful.key({ modkey,           }, "l",
             function() awful.tag.incmwfact( 0.05)          end,
             {description = "increase master width factor", group = "layout"}),
@@ -373,7 +406,7 @@ globalkeys = awful.util.table.join(
             {description = "restore minimized", group = "client"}),
 
   -- Prompt
-  awful.key({ modkey },            "r",
+  awful.key({ modkey }, "r",
             function() awful.screen.focused().mypromptbox:run() end,
             {description = "run prompt", group = "launcher"}),
 
@@ -395,15 +428,15 @@ globalkeys = awful.util.table.join(
 
 clientkeys = awful.util.table.join(
   -- Change opacity level
-  awful.key({ modkey,           }, "#83", -- Left arrow (keypad)
+  awful.key({ modkey }, "#83", -- Left arrow (keypad)
     function(c) c.opacity = c.opacity - 0.05; end,
     {description = "decrease opacity by 5%", group = "client"}),
-  awful.key({ modkey,           }, "#85", -- Right arrow (keypad)
+  awful.key({ modkey }, "#85", -- Right arrow (keypad)
     function(c) c.opacity = c.opacity + 0.05; end,
     {description = "increase opacity by 5%", group = "client"}),
 
   -- Default key mappings
-  awful.key({ modkey,           }, "f",
+  awful.key({ modkey            }, "f",
     function (c) c.fullscreen = not c.fullscreen; c:raise(); end,
     {description = "toggle fullscreen", group = "client"}),
   awful.key({ modkey, "Shift"   }, "c",
@@ -426,7 +459,16 @@ clientkeys = awful.util.table.join(
     {description = "minimize", group = "client"}),
   awful.key({ modkey,           }, "m",
     function (c) c.maximized = not c.maximized; c:raise(); end,
-    {description = "maximize", group = "client"})
+    {description = "maximize", group = "client"}),
+
+  -- Take screenshot
+  awful.key({ modkey }, "Print",
+    function(c)
+      file = "\"/home/dan/Screens/"..os.date("%Y-%m-%d_%H-%M-%S").."_window.png\""
+      naughty.notify({ title = "Screenshot (Window: "..c.window.."_"..c.name..")", text = file })
+      awful.util.spawn("import -window "..c.window.." "..file)
+    end,
+    {description = "take screenshot (focused pane)", group = "awesome"})
 )
 
 -- Bind all key numbers to tags.

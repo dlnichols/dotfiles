@@ -1,6 +1,8 @@
 # Advanced Aliases.
 # Use with caution
 #
+alias dcssh='dcos node ssh --master-proxy --user=centos'
+
 alias g='git'
 
 # ls, the common ones I use a lot shortened for rapid fire usage
@@ -18,7 +20,7 @@ alias lrt='ls -1Fcrt'
 #alias zshrc='$EDITOR ~/.zshrc' # Quick access to the ~/.zshrc file
 
 alias grep='grep --color=auto'
-alias sgrep='grep -R -n -H -C 5 --exclude-dir={.git,.svn,CVS} '
+alias sgrep='grep -R -n -H -C 5 --exclude-dir={.git,.svn,CVS,node_modules,dist} '
 
 alias t='tail -f'
 

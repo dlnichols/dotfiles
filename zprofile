@@ -1,10 +1,10 @@
 typeset -U path
-path=($HOME/bin $HOME/.rvm/bin $HOME/Android/Sdk/platform-tools /usr/local/heroku/bin $path[@])
+path=($HOME/.rvm/bin ./scripts $HOME/bin $HOME/Android/Sdk/platform-tools /usr/local/heroku/bin $path[@])
 export EDITOR="vim"
-#export IRULE_TEST_BUILDER_LOCAL=true
 export NVM_DIR="/home/dan/.nvm"
 export ANDROID_HOME="/home/dan/Android/Sdk"
 export ANDROID_NDK="/home/dan/workspace/android-ndk-r12"
+export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
 
 # Load NVM and AVN
 [[ -s "$HOME/.nvm/nvm.sh" ]] && source "$HOME/.nvm/nvm.sh"

@@ -4,7 +4,7 @@ echo "These branches are not merged, but are stale:"
 for branch in $(git branch --remote --no-merged origin/develop); do
   commits=$(git log -1 --oneline --since='30 days ago' $branch)
   if [[ -z $commits ]]; then
-    echo $(git log -1 --format="%aN" --abbrev-commit $branch) -- $branch
+    echo $(git log -1 --format="%aN {%ar}" --abbrev-commit $branch) -- $branch
   fi
 done
 

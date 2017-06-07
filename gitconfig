@@ -19,7 +19,7 @@
 	a = add --all
 	c = commit
 	showtrackedignored = ls-files -i --exclude-standard
-	l = log
+	l = log --graph --decorate --oneline
 	lo = log --oneline
 	lg = log --graph --decorate
 	lgo = log --graph --decorate --oneline
@@ -47,3 +47,8 @@
 	editor = vim
 	pager = less -F -X
 	excludesfile = /Users/dan/.gitignore
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true

@@ -118,12 +118,13 @@ URxvt*preeditType:                    OverTheSpot
 ! URxvt*secondaryScroll:                boolean
 ! URxvt*perl-lib:                       string
 ! URxvt*perl-eval:                      perl-eval
-URxvt*perl-ext-common:                default,matcher
+URxvt*perl-ext-common:                default,matcher,clipboard
 ! URxvt*perl-ext:                       string
 ! URxvt*iso14755:                       boolean
 ! URxvt*iso14755_52:                    boolean
 ! URxvt*xrm:                            string
 ! URxvt*keysym.sym:                     keysym
+URxvt*keysym.Shift-Control-V:         perl:clipboard:paste
 URxvt*keysym.Shift-Up:                command:\033]720;1\007
 URxvt*keysym.Shift-Down:              command:\033]721;1\007
 URxvt*keysym.Control-Up:              command:\033]720;5\007

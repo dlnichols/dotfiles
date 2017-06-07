@@ -1,12 +1,12 @@
 #!/bin/bash
 echo "These branches appear merged:"
-git branch --remote --merged origin/develop | egrep -v "(^\*|master|develop|release)" | sed 's/origin\//:/'
+git branch --remote --merged origin/develop | egrep -v "(^\*|master|develop|release|feature/alpha)" | sed 's/origin\//:/'
 
 while true; do
   read -p "Do you wish to remove these? " yn
   case $yn in
     [Yy]* )
-      git branch --remote --merged origin/develop | egrep -v "(^\*|master|develop|release)" | sed 's/origin\//:/' | xargs -n 1 git push origin
+      git branch --remote --merged origin/develop | egrep -v "(^\*|master|develop|release|feature/alpha)" | sed 's/origin\//:/' | xargs git push origin
       break;;
     [Nn]* )
       exit 1;

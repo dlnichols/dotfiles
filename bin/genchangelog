@@ -17,3 +17,4 @@ vim CHANGELOG
 git add CHANGELOG
 git commit -m "Prep for ${new_version} release" --edit
 git tag -a ${new_version}
+git push origin ${new_version}
