@@ -2,7 +2,7 @@ runtime macros/matchit.vim
 call pathogen#infect()
 
 let mapleader = " "
-let g:rspec_command = "Make {spec}"
+let g:rspec_command = "Dispatch rspec {spec}"
 let s:uname = substitute(system("uname -s"), '\n', '', '')
 let g:EclimCompletionMethod = 'omnifunc'
 let g:ctrlp_max_files=20000

@@ -1,11 +1,25 @@
-#!/bin/bash
-echo "These branches are not merged, but are stale:"
-#egrep -v "(^\*|master|develop|release)" | sed 's/origin\//:/'
-for branch in $(git branch --remote --no-merged origin/develop); do
-  commits=$(git log -1 --oneline --since='30 days ago' $branch)
-  if [[ -z $commits ]]; then
-    echo $(git log -1 --format="%aN {%ar}" --abbrev-commit $branch) -- $branch
-  fi
-done
+#!/bin/zsh
 
-exit 1;
+moldy_repo() {
+  #egrep -v "(^\*|master|develop|release)" | sed 's/origin\//:/'
+  for branch in $(git branch --remote --no-merged origin/develop); do
+    commits=$(git log -1 --oneline --since='30 days ago' $branch)
+    if [[ -z $commits ]]; then
+      echo $(git log -1 --format="%aN {%ar}" --abbrev-commit $branch) -- $branch
+    fi
+  done
+}
+
+echo "These branches are not merged, but are stale:"
+
+if [ "$#" -eq 0 ]; then
+  moldy_repo
+elif [ "$#" -eq 1 ] && [[ "${1:l}" == "all" ]]; then
+  for folder in $(find . -maxdepth 1 ! -path . -type d); do
+    echo "Checking ${folder}"
+    cd $folder
+    moldy_repo
+    cd ..
+    echo "\n"
+  done
+fi

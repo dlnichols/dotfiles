@@ -1,0 +1,1 @@
+find . -maxdepth 2 -name CHANGELOG -exec echo {} \; -exec sed -e '/VERSION 1.0.0/,$d' {} \;
