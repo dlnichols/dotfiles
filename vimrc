@@ -5,10 +5,12 @@ let mapleader = " "
 let g:rspec_command = "Dispatch rspec {spec}"
 let s:uname = substitute(system("uname -s"), '\n', '', '')
 let g:EclimCompletionMethod = 'omnifunc'
-let g:ctrlp_max_files=20000
+let g:ctrlp_max_files = 20000
 let g:ctrlp_custom_ignore = {
-  \ 'dir': '\v[\/](build|node_modules)$'
+  \ 'dir': '\v[\/](dist|build|node_modules)$'
   \ }
+let g:ctrlp_mruf_relative = 1
+let g:ctrlp_cmd = 'CtrlPMixed'
 
 syntax on
 filetype plugin indent on
