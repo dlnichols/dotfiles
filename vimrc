@@ -9,17 +9,16 @@ let g:ctrlp_max_files = 20000
 let g:ctrlp_custom_ignore = {
   \ 'dir': '\v[\/](dist|build|node_modules)$'
   \ }
-let g:ctrlp_mruf_relative = 1
-let g:ctrlp_cmd = 'CtrlPMixed'
 
 syntax on
 filetype plugin indent on
-set term=screen-256color
+"set term=screen-256color
 colorscheme zenburn
 
 autocmd BufNewFile,BufRead *.coffee set filetype=coffee
 autocmd BufNewFile,BufRead *.coffee.erb set filetype=coffee
 autocmd BufNewFile,BufRead Guardfile set filetype=ruby
+autocmd BufNewFile,BufRead Jenkinsfile* set filetype=groovy
 autocmd BufNewFile *.spec.ts 0r ~/.vim/skel/spec.ts
 
 "Tabs
@@ -47,6 +46,7 @@ set wildmode=list:longest,full
 "set ignorecase "Make / searches case insensitive unless there is a
 "set smartcase  "capital letter, * searches are still case sensitive
 set scrolloff=3 "Keep more context around the cursor when scrolling
+set backupcopy=yes
 
 "Status line
 set laststatus=2
@@ -71,3 +71,5 @@ map <Leader>t :call RunCurrentSpecFile()<CR>
 map <Leader>s :call RunNearestSpec()<CR>
 map <Leader>l :call RunLastSpec()<CR>
 map <Leader>a :call RunAllSpecs()<CR>
+map <Leader>m :NERDTreeFind<CR>
+map <Leader>n :NERDTreeToggle<CR>

@@ -2,6 +2,9 @@
 # Use with caution
 #
 alias dcssh='dcos node ssh --master-proxy --user=centos'
+alias v='nvim'
+alias vi='nvim'
+alias vim='nvim'
 
 alias g='git'
 

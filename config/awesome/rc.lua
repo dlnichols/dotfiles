@@ -44,6 +44,9 @@ end
 -- Themes define colours, icons, font and wallpapers.
 beautiful.init(awful.util.get_themes_dir().."nichols/theme.lua")
 
+-- Notification icon size
+naughty.config.defaults.icon_size = 32
+
 -- This is used later as the default terminal and editor to run.
 terminal = "urxvt"
 editor = os.getenv("EDITOR") or "vim"
@@ -345,6 +348,12 @@ globalkeys = awful.util.table.join(
   awful.key({ modkey, "Control" }, "k",
             function() awful.screen.focus_relative(-1) end,
             {description = "focus the previous screen", group = "screen"}),
+  awful.key({ modkey, "Control", "Shift" }, "j",
+            awful.tag.viewprev,
+            {description = "next tag ", group = "screen"}),
+  awful.key({ modkey, "Control", "Shift" }, "k",
+            awful.tag.viewnext,
+            {description = "previous tag", group = "screen"}),
   awful.key({ modkey,           }, "u",
             awful.client.urgent.jumpto,
             {description = "jump to urgent client", group = "client"}),

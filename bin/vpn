@@ -17,10 +17,10 @@ case "$1" in
       ROUTEIP=$(ip addr show dev ppp0 | grep inet | awk '{print $2}')
       echo "Route: $ROUTEIP"
     done
-    ip route add 10.0.0.0/16 via $ROUTEIP dev ppp0
+    ip route add 10.0.0.0/8 via $ROUTEIP dev ppp0
     ;;
   "down"|"stop")
-    ip route del 10.0.0.0/16
+    ip route del 10.0.0.0/8
     echo "dirulevpn" | tee /var/run/xl2tpd/l2tp-control
     systemctl stop xl2tpd
     ipsec down irule

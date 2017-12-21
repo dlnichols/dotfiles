@@ -27,3 +27,5 @@ git clone https://github.com/leafgarland/typescript-vim.git
 git clone https://github.com/ctrlpvim/ctrlp.vim.git
 git clone https://github.com/airblade/vim-gitgutter.git
 git clone https://github.com/mhinz/vim-hugefile.git
+git clone https://github.com/machakann/vim-highlightedyank.git
+git clone https://github.com/shougo/deoplete.nvim.git

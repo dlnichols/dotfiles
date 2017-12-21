@@ -1,2 +1,2 @@
-#!/bin/bash
-rsync -rv --ignore-existing ~/Music/Car/* ~/SDCard
+#!/bin/bash -v
+sudo rsync -rv --ignore-existing ~/Music/Processed/* /mnt/sdcard
