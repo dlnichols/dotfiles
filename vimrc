@@ -28,8 +28,9 @@ set shiftwidth=4
 set foldmethod=indent
 set foldlevel=9
 set foldenable
-autocmd FileType sh,bash,zsh,dockerfile,ruby,coffee,lua setl tabstop=2 shiftwidth=2 softtabstop=2 expandtab
-autocmd BufNewFile,BufRead ~/projects/* setl tabstop=2 shiftwidth=2 softtabstop=2 expandtab
+set expandtab
+autocmd FileType sh,bash,zsh,dockerfile,ruby,coffee,lua setl tabstop=2 shiftwidth=2 softtabstop=2
+autocmd BufNewFile,BufRead ~/projects/* setl tabstop=2 shiftwidth=2 softtabstop=2
 
 "Various config
 set nocompatible "Turn off vi compatability mode

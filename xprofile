@@ -16,7 +16,7 @@ if [[ "$XDG_SESSION_DESKTOP" == "awesome" ]]; then
   xscreensaver -no-splash &
 
   # Enable window compositing
-  unagi &
+  xcompmgr -c &
 elif [[ "$XDG_SESSION_DESKTOP" == "gnome" ]]; then
   # Setup the input bus for CJK input
   export GTK_IM_MODULE=ibus

@@ -126,8 +126,6 @@ vicious.register(myvolume, vicious.widgets.volume,
   end, 2, "Master")
 
 -- Create battery widget
-mybattery = wibox.widget.textbox()
-vicious.register(mybattery, vicious.widgets.bat, "B:$2%", 61, "BAT0")
 
 -- Create wifi widget
 -- TODO
@@ -240,7 +238,6 @@ awful.screen.connect_for_each_screen(function(s)
       wibox.widget.systray(),
       myvolume,
       mytextclock,
-      mybattery,
       s.mylayoutbox,
     },
   }
@@ -256,17 +253,17 @@ root.buttons(awful.util.table.join(
 -- }}}
 
 -- {{{ Key bindings
-backlight_actual = "/sys/class/backlight/intel_backlight/actual_brightness"
-backlight        = "/sys/class/backlight/intel_backlight/brightness"
-backlight_maxf   = "/sys/class/backlight/intel_backlight/max_brightness"
-
-local f = io.open(backlight_actual, "rb")
-backlight_value = f:read("*all")
-f:close()
-
-local f = io.open(backlight_maxf, "rb")
-backlight_max   = tonumber(f:read("*all"))
-f:close()
+-- backlight_actual = "/sys/class/backlight/intel_backlight/actual_brightness"
+-- backlight        = "/sys/class/backlight/intel_backlight/brightness"
+-- backlight_maxf   = "/sys/class/backlight/intel_backlight/max_brightness"
+-- 
+-- local f = io.open(backlight_actual, "rb")
+-- backlight_value = f:read("*all")
+-- f:close()
+-- 
+-- local f = io.open(backlight_maxf, "rb")
+-- backlight_max   = tonumber(f:read("*all"))
+-- f:close()
 
 globalkeys = awful.util.table.join(
   -- Change volume

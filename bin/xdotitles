@@ -1,0 +1,6 @@
+#!/bin/bash
+
+pids=$(xdotool search --all --onlyvisible --name .\*)
+for pid in $pids; do
+	echo $pid $(xdotool getwindowname $pid)
+done
