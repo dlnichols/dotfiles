@@ -1,4 +1,0 @@
-NERDTree
-wincmd w
-silent grep -o "TODO:.*" public/builder/**/*.spec.ts public/manager/**/*.spec.ts
-copen
