@@ -3,7 +3,7 @@ path=($HOME/.rvm/bin ./scripts $HOME/bin $HOME/Android/Sdk/platform-tools /usr/l
 export EDITOR="nvim"
 export NVM_DIR="$HOME/.nvm"
 export ANDROID_HOME="$HOME/Android/Sdk"
-export ANDROID_NDK="$HOME/workspace/android-ndk/r15c"
+export ANDROID_NDK="/opt/android-ndk/r15c"
 unset SSH_AGENT_PID
 export SSH_AUTH_SOCK="/run/user/$UID/gnupg/S.gpg-agent.ssh"
 export GPG_TTY=$(tty)
@@ -33,10 +33,3 @@ function kenc() {
   fi
   signer -o encrypt -u ~/.ssh/kramer/kfw.pub.pem -c ${1} -e ${1%.tgz}.kfw
 }
-
-# Load NVM and AVN
-[[ -s "$NVM_DIR/nvm.sh" ]] && \. "$NVM_DIR/nvm.sh"
-[[ -s "$HOME/.avn/bin/avn.sh" ]] && source "$HOME/.avn/bin/avn.sh"
-
-# Load RVM
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"

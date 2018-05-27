@@ -9,6 +9,7 @@ let g:ctrlp_max_files = 20000
 let g:ctrlp_custom_ignore = {
   \ 'dir': '\v[\/](dist|build|node_modules)$'
   \ }
+let g:ctrlp_cmd = 'CtrlPBuffer'
 
 syntax on
 filetype plugin indent on
@@ -38,7 +39,8 @@ set backupdir=~/.vim/tmp "Everything vim should be in .vim
 set directory=~/.vim/tmp
 set showcmd
 set incsearch
-set list listchars=tab:»·,trail:· "Show tabs and trailing spaces
+"set list listchars=tab:»·,trail:· "Show tabs and trailing spaces
+
 set list
 "set hidden "Allow modified buffers to be hidden/background
 set nowrap
@@ -74,3 +76,4 @@ map <Leader>l :call RunLastSpec()<CR>
 map <Leader>a :call RunAllSpecs()<CR>
 map <Leader>m :NERDTreeFind<CR>
 map <Leader>n :NERDTreeToggle<CR>
+map <A-P> :CtrlP<CR>

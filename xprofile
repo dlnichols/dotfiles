@@ -3,25 +3,23 @@
 if [[ "$XDG_SESSION_DESKTOP" == "awesome" ]]; then
   export PATH="$HOME/bin:$PATH"
 
+  # Setup the input bus for CJK input
+  export GTK_IM_MODULE=fcitx
+  export XMODIFIERS=@im=fcitx
+  export QT_IM_MODULE=fcitx
+
   # Turn off screen blanking
   xset -dpms s off s noblank
 
-  # Setup the input bus for CJK input
-  export GTK_IM_MODULE=ibus
-  export XMODIFIERS=@im=ibus
-  export QT_IM_MODULE=ibus
-  ibus-daemon -drx
+  # Enable PA systray control
+  pasystray &
+
+  # Enable FCITX
+  fcitx &
 
   # Enable XScreensaver
   xscreensaver -no-splash &
 
   # Enable window compositing
-  xcompmgr -c &
-elif [[ "$XDG_SESSION_DESKTOP" == "gnome" ]]; then
-  # Setup the input bus for CJK input
-  export GTK_IM_MODULE=ibus
-  export XMODIFIERS=@im=ibus
-  export QT_IM_MODULE=ibus
-  ibus-daemon -drx
+  xcompmgr -Cc -r0 -o0 -l0 -t0  &
 fi
-

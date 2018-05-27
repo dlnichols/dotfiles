@@ -5,8 +5,9 @@ alias dcssh='dcos node ssh --master-proxy --user=centos'
 alias v='nvim'
 alias vi='nvim'
 alias vim='nvim'
-
+alias n='nebula'
 alias g='git'
+alias j='jobs'
 
 # ls, the common ones I use a lot shortened for rapid fire usage
 alias ls='ls --quoting-style=literal --color=auto'

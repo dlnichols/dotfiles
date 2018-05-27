@@ -81,14 +81,14 @@ URxvt*cursorColor:                    #DCDCCC
 ! URxvt*pointerColor2:                  color
 ! URxvt*borderColor:                    color
 ! URxvt*iconFile:                       file
-!URxvt*font: -*-terminus-medium-*-*-*-*-140-*-*-*-*-iso8859-2
-URxvt*font:                           xft:Noto Mono:pixelsize=18
-!URxvt*boldFont: -*-terminus-bold-*-*-*-*-140-*-*-*-*-iso8859-2
-URxvt*boldFont:                       xft:Noto Mono:style=bold:pixelsize=18
+! URxvt*font: -*-terminus-medium-*-*-*-*-140-*-*-*-*-iso8859-2
+URxvt*font:                           xft:Ubuntu Mono:pixelsize=18,xft:Noto Mono:pixelsize=18
+! URxvt*boldFont: -*-terminus-bold-*-*-*-*-140-*-*-*-*-iso8859-2
+URxvt*boldFont:                       xft:Ubuntu Mono:style=bold:pixelsize=18,xft:Noto Mono:style=bold:pixelsize=18
 ! URxvt*italicFont: -*-terminus-medium-*-*-*-*-140-*-*-*-*-iso8859-2
 ! URxvt*boldItalicFont: -*-terminus-bold-*-*-*-*-12-*-*-*-*-iso8859-2
 ! URxvt*intensityStyles:                boolean
-URxvt*inputMethod:                    ibus
+URxvt*inputMethod:                    fcitx
 URxvt*preeditType:                    OverTheSpot
 ! URxvt*imLocale:                       string
 ! URxvt*imFont:                         fontname
@@ -105,7 +105,6 @@ URxvt*preeditType:                    OverTheSpot
 ! URxvt*internalBorder:                 number
 ! URxvt*borderLess:                     boolean
 ! URxvt*lineSpace:                      number
-! URxvt*letterSpace:                    number
 ! URxvt*skipBuiltinGlyphs:              boolean
 ! URxvt*pointerBlankDelay:              number
 ! URxvt*backspacekey:                   string

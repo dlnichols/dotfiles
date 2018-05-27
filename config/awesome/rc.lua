@@ -119,11 +119,7 @@ menubar.utils.terminal = terminal -- Set the terminal for applications that requ
 
 -- {{{ Wibar
 -- Create volume widget
-myvolume = wibox.widget.textbox()
-vicious.register(myvolume, vicious.widgets.volume,
-  function(widget, args)
-    return " V:"..args[1]..args[2]
-  end, 2, "Master")
+-- Use pasystray now for more advanced control of pulse audio
 
 -- Create battery widget
 
@@ -268,13 +264,13 @@ root.buttons(awful.util.table.join(
 globalkeys = awful.util.table.join(
   -- Change volume
   awful.key({ }, "XF86AudioRaiseVolume",
-            function() awful.util.spawn("amixer set Master 2%+", false) end,
+            function() awful.util.spawn("pamixer -i 2", false) end,
             {description = "increase volume", group = "awesome"}),
   awful.key({ }, "XF86AudioLowerVolume",
-            function() awful.util.spawn("amixer set Master 2%-", false) end,
+            function() awful.util.spawn("pamixer -d 2", false) end,
             {description = "decrease volume", group = "awesome"}),
   awful.key({ }, "XF86AudioMute",
-            function() awful.util.spawn("amixer set Master toggle", false) end,
+            function() awful.util.spawn("pamixer -t", false) end,
             {description = "mute", group = "awesome"}),
 
   -- Change brightness
