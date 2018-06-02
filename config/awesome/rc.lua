@@ -15,6 +15,11 @@ local naughty = require("naughty")
 local menubar = require("menubar")
 local hotkeys_popup = require("awful.hotkeys_popup").widget
 
+function file_exists(name)
+  local f=io.open(name,"r")
+  if f~=nil then io.close(f) return true else return false end
+end
+
 -- {{{ Error handling
 -- Check if awesome encountered an error during startup and fell back to
 -- another config (This code will only ever execute for the fallback config)
@@ -118,13 +123,23 @@ menubar.utils.terminal = terminal -- Set the terminal for applications that requ
 -- }}}
 
 -- {{{ Wibar
--- Create volume widget
--- Use pasystray now for more advanced control of pulse audio
-
 -- Create battery widget
+if (file_exists("/sys/class/power_supply/BAT0/capacity")) then
+  mybattery = wibox.widget.textbox()
+  vicious.register(mybattery, vicious.widgets.bat, "$2%$1", 17, "BAT0")
+  mybattery:buttons(
+    awful.util.table.join(
+      awful.button({ }, 1, function()
+        local state = 
+        naughty.notify({ title = "Battery indicator",
+                         text = vicious.call(vicious.widgets.bat, "Remaining time: $1 $3", "BAT0") })
+        end
+      )
+    )
+  )
+end
 
 -- Create wifi widget
--- TODO
 
 -- Create a textclock widget
 mytextclock = wibox.widget.textclock()
@@ -232,7 +247,7 @@ awful.screen.connect_for_each_screen(function(s)
     { -- Right widgets
       layout = wibox.layout.fixed.horizontal,
       wibox.widget.systray(),
-      myvolume,
+      mybattery,
       mytextclock,
       s.mylayoutbox,
     },
@@ -249,18 +264,6 @@ root.buttons(awful.util.table.join(
 -- }}}
 
 -- {{{ Key bindings
--- backlight_actual = "/sys/class/backlight/intel_backlight/actual_brightness"
--- backlight        = "/sys/class/backlight/intel_backlight/brightness"
--- backlight_maxf   = "/sys/class/backlight/intel_backlight/max_brightness"
--- 
--- local f = io.open(backlight_actual, "rb")
--- backlight_value = f:read("*all")
--- f:close()
--- 
--- local f = io.open(backlight_maxf, "rb")
--- backlight_max   = tonumber(f:read("*all"))
--- f:close()
-
 globalkeys = awful.util.table.join(
   -- Change volume
   awful.key({ }, "XF86AudioRaiseVolume",
@@ -272,26 +275,6 @@ globalkeys = awful.util.table.join(
   awful.key({ }, "XF86AudioMute",
             function() awful.util.spawn("pamixer -t", false) end,
             {description = "mute", group = "awesome"}),
-
-  -- Change brightness
-  awful.key({ }, "XF86MonBrightnessUp",
-            function()
-              backlight_value = backlight_value + 100
-              if (0 > backlight_max) then
-                backlight_value = backlight_max
-              end
-              os.execute("echo "..string.format("%u", backlight_value).." >> "..backlight, false)
-            end,
-            {description = "increase brightness", group = "awesome"}),
-  awful.key({ }, "XF86MonBrightnessDown",
-            function()
-              backlight_value = backlight_value - 100
-              if (backlight_value < 0) then
-                backlight_value = 0
-              end
-              os.execute("echo "..string.format("%u", backlight_value).." >> "..backlight, false)
-            end,
-            {description = "decrease brightness", group = "awesome"}),
 
   -- Take screenshot
   awful.key({        }, "Print",
@@ -427,6 +410,45 @@ globalkeys = awful.util.table.join(
             function() menubar.show() end,
             {description = "show the menubar", group = "launcher"})
 )
+
+
+backlight        = "/sys/class/backlight/intel_backlight/brightness"
+backlight_actual = "/sys/class/backlight/intel_backlight/actual_brightness"
+backlight_maxf   = "/sys/class/backlight/intel_backlight/max_brightness"
+
+if (file_exists(backlight)) then
+  local f = io.open(backlight_actual, "rb")
+  backlight_value = tonumber(f:read("*all"))
+  f:close()
+
+  local f = io.open(backlight_maxf, "rb")
+  backlight_max   = tonumber(f:read("*all"))
+  f:close()
+
+  globalkeys = awful.util.table.join(
+    globalkeys,
+
+    -- Change brightness
+    awful.key({ }, "XF86MonBrightnessUp",
+              function()
+                backlight_value = backlight_value + 100
+                if (0 > backlight_max) then
+                  backlight_value = backlight_max
+                end
+                os.execute("echo "..string.format("%u", backlight_value).." >> "..backlight, false)
+              end,
+              {description = "increase brightness", group = "awesome"}),
+    awful.key({ }, "XF86MonBrightnessDown",
+              function()
+                backlight_value = backlight_value - 100
+                if (backlight_value < 0) then
+                  backlight_value = 0
+                end
+                os.execute("echo "..string.format("%u", backlight_value).." >> "..backlight, false)
+              end,
+              {description = "decrease brightness", group = "awesome"})
+  )
+end
 
 clientkeys = awful.util.table.join(
   -- Change opacity level

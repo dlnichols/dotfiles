@@ -61,6 +61,9 @@ let g:ctrlp_custom_ignore = {
   \ 'dir': '\v[\/](dist|build|node_modules)$'
   \ }
 
+set list
+set nowrap
+
 " Key Mappings
 map <Leader>m :NERDTreeFind<CR>
 map <Leader>n :NERDTreeToggle<CR>

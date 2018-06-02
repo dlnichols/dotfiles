@@ -1,15 +1,7 @@
-typeset -U path
-path=($HOME/.rvm/bin ./scripts $HOME/bin $HOME/Android/Sdk/platform-tools /usr/local/heroku/bin $path[@])
 export EDITOR="nvim"
-export NVM_DIR="$HOME/.nvm"
 export ANDROID_HOME="$HOME/Android/Sdk"
 export ANDROID_NDK="/opt/android-ndk/r15c"
-unset SSH_AGENT_PID
-export SSH_AUTH_SOCK="/run/user/$UID/gnupg/S.gpg-agent.ssh"
-export GPG_TTY=$(tty)
-gpg-connect-agent updatestartuptty /bye >/dev/null
 
-#alias kdec='signer -o decrypt -r ~/.ssh/kramer/kfw.pri.pem
 function kdec() {
   echo ${1%.kfw}
   if [[ ! ${1} =~ ".kfw"$ ]]; then

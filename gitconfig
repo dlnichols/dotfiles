@@ -9,6 +9,7 @@
 	d = diff
 	dc = diff --cached
 	ds = diff --stat
+	de = describe --tags --first-parent
 	f = fetch --all --prune
 	p = pull --ff-only
 	pa = pull --all --prune --ff-only
