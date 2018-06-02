@@ -22,6 +22,7 @@ Plug 'tpope/vim-abolish' " :Subvert & :Coersion
 Plug 'machakann/vim-highlightedyank' " Highlight the yanked region
 
 " Auto complete
+Plug 'ervandew/supertab'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 
 " NerdTree
@@ -54,6 +55,11 @@ call plug#end()
 " Settings
 let mapleader=" "
 
+let g:neosnippet#enable_snipmate_compatibility = 1
+let g:neosnippet#snippets_directory='~/.config/nvim/plugged/vim-snippets/snippets'
+
+"let g:SuperTabDefaultCompletionType = "<c-x><c-o>"
+
 let g:deoplete#enable_at_startup = 1
 
 let g:ctrlp_max_files = 20000
@@ -63,8 +69,23 @@ let g:ctrlp_custom_ignore = {
 
 set list
 set nowrap
+set foldmethod=indent
+set foldlevel=9
+set foldenable
+if has('conceal')
+  set conceallevel=2 concealcursor=niv
+endif
 
 " Key Mappings
 map <Leader>m :NERDTreeFind<CR>
 map <Leader>n :NERDTreeToggle<CR>
 map <Leader>p :CtrlPBuffer<CR>
+imap <C-k>     <Plug>(neosnippet_expand_or_jump)
+smap <C-k>     <Plug>(neosnippet_expand_or_jump)
+xmap <C-k>     <Plug>(neosnippet_expand_target)
+smap <expr><TAB> neosnippet#expandable_or_jumpable() ? "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
+
+" Settings
+syntax on
+filetype plugin indent on
+colorscheme zenburn
