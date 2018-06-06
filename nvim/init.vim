@@ -45,10 +45,11 @@ Plug 'tpope/vim-git'
 "tpope/vim-markdown.git
 
 " Ruby - Make conditional on filetype
-"tpope/vim-rvm.git
-"tpope/vim-bundler.git
-"tpope/vim-rails.git
-"vim-ruby/vim-ruby.git
+Plug 'tpope/vim-rvm'
+Plug 'vim-ruby/vim-ruby'
+Plug 'tpope/vim-bundler'
+Plug 'ngmy/vim-rubocop'
+"tpope/vim-rails
 
 call plug#end()
 
