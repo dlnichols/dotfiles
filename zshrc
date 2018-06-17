@@ -49,7 +49,7 @@ ZSH_CUSTOM=~/.dotfiles/zsh
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(common-aliases aws archlinux gradle nvm rvm bundler zsh-completions docker rails ruby)
+plugins=(common-aliases aws archlinux gradle nvm rails ruby rvm bundler zsh-completions docker docker-compose)
 
 # User configuration
 
